@@ -10,6 +10,7 @@ import {
 	Folder2,
 	Setting2,
 	LogoutCurve,
+	IconProps,
 } from "iconsax-react";
 import Logo from "../../assets/Logo/logo.svg";
 
@@ -20,7 +21,7 @@ import Logo from "../../assets/Logo/logo.svg";
 interface SidebarLink {
 	to: string;
 	label: string;
-	icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+	icon: React.FC<IconProps>;
 }
 
 const MAIN_LINKS: SidebarLink[] = [
