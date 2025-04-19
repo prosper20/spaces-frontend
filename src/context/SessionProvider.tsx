@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import React, { useEffect } from "react";
-import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+// import React, { useEffect } from "react";
+// import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
+// import { useNavigate } from "react-router-dom";
 import { BASE_URL, URL } from "../utils/url";
 
 function SessionProvider({ children }: { children: React.ReactNode }) {
@@ -14,8 +15,8 @@ function SessionProvider({ children }: { children: React.ReactNode }) {
 
 	console.log(refreshToken);
 
-	const navigate = useNavigate();
-	const isAuthenticated = useIsAuthenticated();
+	// const navigate = useNavigate();
+	// const isAuthenticated = useIsAuthenticated();
 	// useEffect(() => {
 	// 	if (!isAuthenticated) {
 	// 		navigate("/welcome");

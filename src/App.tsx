@@ -2,9 +2,8 @@ import {
 	Navigate,
 	createBrowserRouter,
 	RouterProvider,
-	Outlet,
 } from "react-router-dom";
-import React, { lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 
 import Login from "./pages/auth/Login";
 import GlobalLayout from "./components/layout/GlobalLayout";
