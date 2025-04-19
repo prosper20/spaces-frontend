@@ -10,7 +10,7 @@ import { FormInput } from "../../components/UI/Input/Inputs";
 import { signupSchema, TSignup } from "../../types/auth/signup";
 import { PostRequest } from "../../utils/url";
 import { useAppContext } from "../../context/AppContext";
-import Logo from "../../assets/Logo/Logo.svg";
+import Logo from "../../assets/Logo/logo.svg";
 
 const Signup = () => {
 	const {
