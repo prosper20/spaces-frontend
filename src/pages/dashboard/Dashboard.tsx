@@ -42,7 +42,7 @@ const DashboardHome: React.FC = () => {
 				<AgendaCard />
 
 				{/* Row 3 */}
-				<ContributionsCard className="md:col-span-2" />
+				<ContributionsCard />
 			</div>
 		</section>
 	);

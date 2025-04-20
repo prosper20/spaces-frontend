@@ -26,7 +26,7 @@ export default {
 			},
 			fontWeight: {
 				header1: "600",
-				header2: "400"
+				header2: "400",
 			},
 			colors: {
 				"background-primary": "#FDFAF7",
@@ -61,6 +61,7 @@ export default {
 				black: "#000",
 				background: { 100: "#F5F0EB" },
 				text: { 100: "#2E2E2E" },
+				text: {200: "#2E2E2E94"},
 				button: { 100: "#B28B50" },
 				sidebar: { 100: "#B28B50" },
 				card: { 100: "#FFFFFF" },

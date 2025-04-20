@@ -1,55 +1,74 @@
 import { Circle } from "lucide-react";
 import React from "react";
+import Card1 from "../../../components/Card1";
 
 interface Props {
-	percent?: number; // 0‑100
+	completed?: number;
+	inProgress?: number;
+	notStarted?: number;
 }
-const TasksProgressCard: React.FC<Props> = ({ percent = 60 }) => {
+
+const TasksProgressCard: React.FC<Props> = ({
+	completed = 60,
+	inProgress = 25,
+	notStarted = 15,
+}) => {
+	const total = completed + inProgress + notStarted;
 	const radius = 40;
-	const stroke = 8;
-	const normalizedRadius = radius - stroke / 2;
-	const circumference = normalizedRadius * 2 * Math.PI;
-	const strokeDashoffset = circumference - (percent / 100) * circumference;
+	const strokeWidth = 8;
+	const center = 50;
+	const normalizedRadius = radius - strokeWidth / 2;
+	const circumference = 2 * Math.PI * normalizedRadius;
+
+	const segments = [
+		{ label: "Completed", value: completed, color: "#18320C" },
+		{ label: "In progress", value: inProgress, color: "#CDBF2C" },
+		{ label: "Not started", value: notStarted, color: "#E5E5E5" },
+	];
+
+	let offset = 0;
 
 	return (
-		<div className="rounded-lg bg-white shadow-sm border border-gray-200 p-6 flex flex-col">
-			<h3 className="text-lg font-semibold mb-4">Tasks</h3>
-
-			{/* Donut chart */}
+		<Card1 header={"Task"} className="w-[328px] h-[232px]" isStroked>
+			{/* Donut Chart */}
 			<div className="relative w-24 h-24 mx-auto">
-				<svg width="100%" height="100%" className="-rotate-90">
-					<circle
-						stroke="#E5E5E5"
-						fill="transparent"
-						strokeWidth={stroke}
-						r={normalizedRadius}
-						cx={radius}
-						cy={radius}
-					/>
-					<circle
-						stroke="#18320C"
-						fill="transparent"
-						strokeWidth={stroke}
-						strokeLinecap="round"
-						strokeDasharray={`${circumference} ${circumference}`}
-						strokeDashoffset={strokeDashoffset}
-						r={normalizedRadius}
-						cx={radius}
-						cy={radius}
-					/>
+				<svg width="100" height="100">
+					{segments.map((segment, index) => {
+						const percentage = segment.value / total;
+						const dashLength = percentage * circumference;
+
+						const circle = (
+							<circle
+								key={index}
+								cx={center}
+								cy={center}
+								r={normalizedRadius}
+								fill="transparent"
+								stroke={segment.color}
+								strokeWidth={strokeWidth}
+								strokeDasharray={`${dashLength} ${circumference}`}
+								strokeDashoffset={offset}
+								strokeLinecap="butt"
+								transform={`rotate(-90 ${center} ${center})`}
+							/>
+						);
+
+						offset -= dashLength;
+						return circle;
+					})}
 				</svg>
-				<span className="absolute inset-0 flex items-center justify-center font-bold text-xl">
-					{percent}%
+				<span className="absolute top-[55%] left-[45%] flex items-center justify-center font-bold text-[24px] text-black">
+					{completed}%
 				</span>
 			</div>
 
 			{/* Legend */}
-			<div className="mt-4 flex items-center gap-4 text-xs">
+			<div className="mt-4 flex items-center gap-4 text-xs justify-center">
 				<LegendDot color="#E5E5E5" label="Not started" />
 				<LegendDot color="#CDBF2C" label="In progress" />
 				<LegendDot color="#18320C" label="Completed" />
 			</div>
-		</div>
+		</Card1>
 	);
 };
 
