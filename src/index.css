@@ -15,14 +15,11 @@
 	display: none;
 }
 
-body {
-	font-family: "DM Sans", sans-serif;
-}
-
 .btn-style-1 {
 	border-radius: 10px;
 	border: 2px solid #27bba5;
-	background: linear-gradient(
+	background:
+		linear-gradient(
 			180deg,
 			rgba(255, 255, 255, 0.15) 0%,
 			rgba(255, 255, 255, 0) 100%,
@@ -48,7 +45,8 @@ body {
 .join-community-btn {
 	border-radius: 10px;
 	border: 2px solid #d4f1ed;
-	background: linear-gradient(
+	background:
+		linear-gradient(
 			180deg,
 			rgba(255, 255, 255, 0.15) 0%,
 			rgba(255, 255, 255, 0) 100%,
@@ -59,7 +57,7 @@ body {
 
 @layer base {
 	body {
-		@apply bg-white h-dvh;
+		@apply font-sans bg-white h-dvh;
 	}
 	.customContainer {
 		@apply max-w-screen-xxl mx-auto max-h-[948px];

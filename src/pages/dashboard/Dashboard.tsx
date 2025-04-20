@@ -37,7 +37,7 @@ const DashboardHome: React.FC = () => {
 				<CalendarWidget />
 
 				{/* Row 2 */}
-				<ActiveGroupsCard className="lg:row-span-2" />
+				<ActiveGroupsCard className="lg:row-span-2 shadow-box-shadow1 w-[328px] h-[471px]" />
 				<UpcomingSessionsCard />
 				<AgendaCard />
 
@@ -49,38 +49,3 @@ const DashboardHome: React.FC = () => {
 };
 
 export default DashboardHome;
-
-// const Dashboard = () => {
-// 	return (
-// 		<div className="flex h-screen bg-background-100">
-// 			<DashboardSidebar />
-// 			<div className="flex-1 flex flex-col">
-// 				<DashboardTopbar />
-// 				<main className="flex-1 overflow-y-auto lg:p-8 p-4">
-// 					{/* grid for the widgets */}
-// 					<section
-// 						className="
-//           grid gap-6
-//           lg:grid-cols-[repeat(3,minmax(0,1fr))]
-//           md:grid-cols-2
-//           grid-cols-1
-//         "
-// 					>
-// 						{/* Row 1 */}
-// 						<CreateJoinCard />
-// 						<TasksProgressCard />
-// 						<CalendarWidget />
-// 						{/* Row 2 */}
-// 						<ActiveGroupsCard className="lg:row-span-2" />
-// 						<UpcomingSessionsCard />
-// 						<AgendaCard />
-// 						{/* Row 3 */}
-// 						<ContributionsCard className="md:col-span-2" />
-// 					</section>
-// 				</main>
-// 			</div>
-// 		</div>
-// 	);
-// };
-
-// export default Dashboard;

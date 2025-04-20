@@ -14,8 +14,19 @@ export default {
 			xl: "1280px",
 			xxl: "1536px",
 		},
+		boxShadow: {
+			"box-shadow1": "4px 4px 10px 0px #D8C4AA",
+			"box-shadow2": "0px 0px 8px 0px #00000040",
+		},
 		extend: {
+			fontFamily: {
+				sans: ["Poppins", "sans-serif"],
+			},
+			fontWeight: {
+				header1: "600",
+			},
 			colors: {
+				"background-primary": "#FDFAF7",
 				"background-100": "#F5F0EB",
 				"text-100": "#2E2E2E",
 				"primary-button-100": "#B28B50",
@@ -30,7 +41,7 @@ export default {
 				"primary-200": "#D4F1ED",
 				"primary-100": "#E9F8F6",
 				"gray-700": "#3F3F3F",
-				"gray-600": "#606060",
+				"gray-600": "#747373",
 				"gray-500": "#808080",
 				"gray-400": "#CDCDCD",
 				"gray-300": "#DBDBDB",
@@ -40,6 +51,8 @@ export default {
 				error: "#DE0028",
 				action: "#B00020",
 				warning: "#FFC552",
+				lightpink: "#E8B4A4",
+				cubepink: "#E8B4A459",
 				pink: "#FFECEF",
 				white: "#fff",
 				black: "#000",
