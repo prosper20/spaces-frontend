@@ -1,13 +1,13 @@
+import Card1 from "../../../components/Card1";
+
 const plus = "Plus.svg";
 
 const CreateJoinCard = () => (
-	<div className="rounded-[5px] bg-background-primary w-[328px] h-[232px] shadow-box-shadow1 pt-[32px]">
-		<header className="mb-4">
-			<h3 className="text-[24px] font-header1 px-[16px] text-text-100 border-b">
-				Create / Join Group
-			</h3>
-		</header>
-
+	<Card1
+		header={"Create / Join Group"}
+		className="w-[328px] h-[232px]"
+		isStroked
+	>
 		<div className="flex justify-end items-end mt-[60px] pr-[31px]">
 			<button
 				aria-label="create or join"
@@ -19,7 +19,7 @@ const CreateJoinCard = () => (
 				<img src={plus} alt="image of plus" className="mt-6 w-[40px]" />
 			</button>
 		</div>
-	</div>
+	</Card1>
 );
 
 export default CreateJoinCard;

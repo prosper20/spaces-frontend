@@ -37,7 +37,7 @@ const DashboardHome: React.FC = () => {
 				<CalendarWidget />
 
 				{/* Row 2 */}
-				<ActiveGroupsCard className="lg:row-span-2 shadow-box-shadow1 w-[328px] h-[471px]" />
+				<ActiveGroupsCard />
 				<UpcomingSessionsCard />
 				<AgendaCard />
 

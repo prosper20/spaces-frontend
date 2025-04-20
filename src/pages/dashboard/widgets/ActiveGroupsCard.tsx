@@ -1,6 +1,8 @@
 import { Box } from "lucide-react";
 
 import React from "react";
+import Card1 from "../../../components/Card1";
+import Shadow1 from "../../../components/Shadows";
 
 export interface Group {
 	id: string;
@@ -22,24 +24,20 @@ const mockGroups: Group[] = [
 
 const users = "Vector.svg";
 
-const ActiveGroupsCard: React.FC<Props> = ({
-	groups = mockGroups,
-	className = "",
-}) => (
-	<div
-		className={`rounded-[8px] bg-background-primary flex flex-col ${className}`}
+const ActiveGroupsCard: React.FC<Props> = ({ groups = mockGroups }) => (
+	<Card1
+		header={"Active Groups"}
+		className="lg:row-span-2 w-[328px] h-[471px]"
+		isStroked
 	>
-		<header className="flex items-center mt-[32px] justify-between px-8 border-b">
-			<h3 className="text-[24px] text-text-100 font-header1">Active Groups</h3>
-		</header>
 		<button className="text-[14px] text-right px-[25px] mt-[24px] font-header1 underline underline-offset-[24.5%] text-lightpink hover:underline">
 			View all
 		</button>
 		<ul className="px-8 flex flex-col gap-[22px] mt-[17px]">
 			{groups.map((g) => (
-				<li
+				<Shadow1
 					key={g.id}
-					className="shadow-box-shadow2 h-[62px] pl-[13px] py-[10px] text-[#747373] flex items-center gap-[25px] rounded-[5px]"
+					className="h-[62px] pl-[13px] py-[10px] text-[#747373] flex items-center gap-[25px]"
 				>
 					<div className="w-[48px] h-[40px] bg-cubepink place-content-center place-items-center rounded-[5px]">
 						<Box size={38} strokeWidth={0.7} className="text-purple-500" />
@@ -57,10 +55,10 @@ const ActiveGroupsCard: React.FC<Props> = ({
 							<p className="text-[14px]">{g.members} members</p>
 						</div>
 					</div>
-				</li>
+				</Shadow1>
 			))}
 		</ul>
-	</div>
+	</Card1>
 );
 
 export default ActiveGroupsCard;

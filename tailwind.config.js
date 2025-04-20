@@ -26,6 +26,7 @@ export default {
 			},
 			fontWeight: {
 				header1: "600",
+				header2: "400"
 			},
 			colors: {
 				"background-primary": "#FDFAF7",
@@ -45,7 +46,7 @@ export default {
 				"gray-700": "#3F3F3F",
 				"gray-600": "#747373",
 				"gray-500": "#808080",
-				"gray-400": "#CDCDCD",
+				"gray-400": "#403E3E",
 				"gray-300": "#DBDBDB",
 				"gray-200": "#E5E5E5",
 				"gray-100": "#F5F5F5",
