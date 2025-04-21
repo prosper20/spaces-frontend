@@ -22,8 +22,7 @@ export default {
 			"chevrolet-shadow": "0px 0px 4px 0px #D8C4AA",
 			"calendar-date": "0px 4px 4px 0px #00000040",
 			"agenda-shadow": "0px 0px 4px 0px #D8C4AA7A",
-			"search-bar": "4px 4px 10px 5px #D8C4AA"
-
+			"search-bar": "4px 4px 10px 5px #D8C4AA",
 		},
 		extend: {
 			fontFamily: {
@@ -75,7 +74,7 @@ export default {
 				button: { 100: "#B28B50" },
 				sidebar: { 100: "#B28B50" },
 				card: { 100: "#FFFFFF" },
-				border: "#5C4033"
+				border: "#5C4033",
 			},
 		},
 	},
