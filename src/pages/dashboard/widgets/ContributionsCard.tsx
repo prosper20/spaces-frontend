@@ -1,9 +1,9 @@
 // import { FileText, Image, CornerUpRight } from "lucide-react";
 import React from "react";
-import Card1 from "../../../components/Card1";
+import Card1 from "../../../components/UI/Input/Card1";
 
 interface Contribution {
-	id: string;
+	id: number;
 	type: "file" | "image" | "reply";
 	text: string;
 	text2?: string;
@@ -15,14 +15,14 @@ interface Props {
 }
 
 const sampleItems: Contribution[] = [
-	{ id: "1", type: "file", text: "Added meeting notes ", text2: '"AI Team"' },
+	{ id: 1, type: "file", text: "Added meeting notes ", text2: '"AI Team"' },
 	{
-		id: "2",
+		id: 2,
 		type: "image",
 		text: "Uploaded logo.png ",
 		text2: '"Brand Sprint"',
 	},
-	{ id: "3", type: "reply", text: "Replied in group chat" },
+	{ id: 3, type: "reply", text: "Replied in group chat" },
 ];
 
 const FileText = "notes.svg";
@@ -49,16 +49,18 @@ const ContributionsCard: React.FC<Props> = ({ items = sampleItems }) => (
 			{items.map((c) => {
 				const Icon = iconMap[c.type];
 				return (
-					<>
-						<li key={c.id} className="flex items-center gap-3">
+					<React.Fragment key={c.id}>
+						<li className="flex items-center gap-3">
 							<img src={Icon} className="mt-[2px]" />
 
 							<p className="text-[12px] font-header2 text-text-100">{c.text}</p>
 						</li>
-						<p className="font-header2 text-text-200 text-[12px] !mt-1 px-[24px]">
-							{c.text2}
-						</p>
-					</>
+						{c.text2 && (
+							<p className="font-header2 text-text-200 text-[12px] !mt-1 px-[24px]">
+								{c.text2}
+							</p>
+						)}
+					</React.Fragment>
 				);
 			})}
 		</ul>

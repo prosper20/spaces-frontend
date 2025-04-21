@@ -16,10 +16,10 @@ const DashboardHome: React.FC = () => {
 		<section className="space-y-8">
 			{/* ───────────── Greeting header ───────────── */}
 			<header>
-				<h1 className="text-[clamp(1.5rem,2vw+1rem,2rem)] font-bold">
-					Welcome Back,
-				</h1>
-				<p className="text-lg font-semibold text-text-100">Darlene Robertson</p>
+				<h1 className="text-[36px] font-header text-text-100">Welcome Back,</h1>
+				<p className="font-header1 text-[24px] text-text-100/[71%]">
+					Darlene Robertson
+				</p>
 			</header>
 
 			{/* ───────────── Cards grid ───────────── */}

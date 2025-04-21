@@ -8,6 +8,7 @@ import {
 } from "date-fns";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useState } from "react";
+import { Card2 } from "../../../components/UI/Input/Card1";
 
 const weekdays = ["S", "M", "T", "W", "T", "F", "S"];
 
@@ -20,32 +21,45 @@ const CalendarWidget: React.FC = () => {
 	});
 
 	const padStart = getDay(startOfMonth(month)); // 0‑6
+	console.log(padStart);
 
 	return (
-		<div className="rounded-lg bg-white shadow-sm border border-gray-200 p-4 flex flex-col gap-2">
+		<Card2 className="rounded-[20px] pt-[23px] w-[357px] h-[auto] pl-[15px] pr-[13px] bg-background-primary pb-[25px]">
 			{/* Header */}
 			<div className="flex items-center justify-between">
 				<button onClick={() => setMonth(addMonths(month, -1))}>
-					<ChevronLeft size={18} />
+					<ChevronLeft
+						size={22}
+						className="shadow-chevrolet-shadow w-[34px] h-[29px] rounded-[500px]"
+					/>
 				</button>
 				<div className="text-center">
-					<p className="font-semibold">{format(month, "LLLL")}</p>
-					<p className="text-xs">{format(month, "yyyy")}</p>
+					<p className="font-header1 text-[16px] text-text-100">
+						{format(month, "LLLL")}
+					</p>
+					<p className="text-[10px] font-[600] text-primary-400">
+						{format(month, "yyyy")}
+					</p>
 				</div>
 				<button onClick={() => setMonth(addMonths(month, 1))}>
-					<ChevronRight size={18} />
+					<ChevronRight
+						size={22}
+						className="shadow-chevrolet-shadow w-[34px] h-[29px] rounded-[500px]"
+					/>
 				</button>
 			</div>
 
 			{/* Weekdays */}
-			<div className="grid grid-cols-7 text-center text-xs font-medium mt-2">
+			<div className="grid grid-cols-7 text-center text-[14px] font-header1 text-text-100 mt-[10px]">
 				{weekdays.map((d) => (
-					<span key={d}>{d}</span>
+					<span className="p-4" key={d}>
+						{d}
+					</span>
 				))}
 			</div>
 
 			{/* Dates */}
-			<div className="grid grid-cols-7 gap-1 text-center text-sm">
+			<div className="grid grid-cols-7 gap-[13px] text-center text-sm mt-[13px]">
 				{Array.from({ length: padStart }).map((_, i) => (
 					<span key={`pad-${i}`} />
 				))}
@@ -56,8 +70,8 @@ const CalendarWidget: React.FC = () => {
 						<button
 							key={day.toString()}
 							className={`
-                aspect-square rounded-md
-                ${isToday ? "bg-button-100 text-white" : "hover:bg-black/10"}
+                aspect-square rounded-md shadow-calendar-date w-[36px] text-[14px] font-header1 text-text-100 h-[33px]
+                ${isToday ? "bg-active-calendar text-white" : "hover:bg-black/10"}
               `}
 						>
 							{format(day, "d")}
@@ -65,7 +79,7 @@ const CalendarWidget: React.FC = () => {
 					);
 				})}
 			</div>
-		</div>
+		</Card2>
 	);
 };
 

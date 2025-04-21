@@ -1,7 +1,8 @@
 // src/components/layout/DashboardTopbar.tsx
-import React from "react";
+import React, { useState } from "react";
 import { Menu, Search, Bell } from "lucide-react";
 import userAvatar from "../../assets/user-images/avatar.png";
+import { Shadow2 } from "../UI/Input/Shadows";
 
 /* Props ------------------------------------------------------------------ */
 interface DashboardTopbarProps {
@@ -12,66 +13,96 @@ interface DashboardTopbarProps {
 const DashboardTopbar: React.FC<DashboardTopbarProps> = ({
 	onHamburgerClick,
 }) => {
+	const [searchTerm, setSearchTerm] = useState<string>("");
+
+	function handleClearSearch() {
+		setSearchTerm("");
+	}
 	return (
 		<header
 			className="
         sticky top-0 z-30 bg-background-100
-        flex items-center gap-4
-        h-16 px-4 lg:px-8 border-b border-black/5
+        lg:place-content-center lg:place-items-end
+		lg:block
+		xxl:place-items-start
+        h-[98px] 
+		border-b-primary-button-100
+		border-b-[1px]
+		lg:px-[62px]
+		px-[10px]
+		flex
+		w-full
+		justify-between
       "
 		>
-			{/* ───── Hamburger (mobile only) ───────────────────────────── */}
-			<button
-				onClick={onHamburgerClick}
-				className="lg:hidden p-2 rounded-md hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-button-100"
-				aria-label="Open sidebar"
+			<div
+				className="
+         bg-background-100
+        flex items-center gap-[104px]
+		xxl:w-full  justify-between lg:w-[659px] w-full
+        
+      "
 			>
-				<Menu size={22} />
-			</button>
-
-			{/* ───── Search bar (flex‑grown) ───────────────────────────── */}
-			<div className="flex-1 flex justify-center">
-				<label
-					htmlFor="topbar-search"
-					className="relative w-full max-w-lg lg:max-w-xl"
-				>
-					<Search
-						size={18}
-						className="absolute left-4 top-1/2 -translate-y-1/2 text-black/50"
-					/>
-
-					<input
-						id="topbar-search"
-						type="search"
-						placeholder="Search"
-						className="
-              w-full pl-12 pr-4 py-2.5
-              rounded-lg border border-black/20 bg-white
-              text-sm focus:outline-none focus:ring-2 focus:ring-button-100
-              placeholder:text-black/40
-            "
-					/>
-				</label>
-			</div>
-
-			{/* ───── Icons (bell + avatar) ─────────────────────────────── */}
-			<div className="flex items-center gap-4">
-				{/* notification bell */}
+				{/* ───── Hamburger (mobile only) ──────────────────────────── */}
 				<button
-					className="relative p-2 rounded-md hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-button-100"
-					aria-label="Notifications"
+					onClick={onHamburgerClick}
+					className="lg:hidden p-2 rounded-md hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-button-100"
+					aria-label="Open sidebar"
 				>
-					<Bell size={22} />
-					{/* red dot */}
-					<span className="absolute top-1 right-1 inline-block w-2 h-2 rounded-full bg-red-500" />
+					<Menu size={22} />
 				</button>
 
-				{/* user avatar */}
-				<img
-					src={userAvatar}
-					alt="User avatar"
-					className="w-9 h-9 rounded-full object-cover border border-black/10"
-				/>
+				{/* ───── Search bar (flex‑grown) ───────────────────────────── */}
+				<Shadow2 className="relative mx-auto w-[419px] hidden lg:flex flex-1 h-[53px] !rounded-[10px] border-border border-[1px] shadow-search-bar px-[18px] place-content-center place-items-center xxl:flex-0 xxl:w-[454px]">
+					<label htmlFor="topbar-search" className=" w-full">
+						<Search
+							size={27}
+							strokeWidth={2.5}
+							className="absolute right-[17px] top-1/2 -translate-y-1/2 text-border"
+						/>
+
+						<input
+							id="topbar-search"
+							type="search"
+							onChange={(e) => setSearchTerm(e.target.value)}
+							value={searchTerm}
+							className="
+              w-[92%] pr-4 py-2.5 text-[18px]
+              rounded-lg bg-transparent
+				focus:outline-none focus:ring-2 focus:ring-transparent
+              
+            "
+						/>
+						{searchTerm && ( // Conditionally render the clear button when there's text
+							<span
+								className="absolute right-[60px] top-1/2 -translate-y-1/2 cursor-pointer text-[16px] text-border hover:text-red-900"
+								onClick={handleClearSearch}
+							>
+								&#x2715; {/* Unicode for a multiplication sign (X) */}
+							</span>
+						)}
+					</label>
+				</Shadow2>
+
+				{/* ───── Icons (bell + avatar) ─────────────────────────────── */}
+				<div className="flex items-center gap-[32px]">
+					{/* notification bell */}
+					<button
+						className="relative p-2 rounded-md hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-button-100"
+						aria-label="Notifications"
+					>
+						<Bell size={38} className="text-text-100" />
+						{/* red dot */}
+						<span className="absolute top-1 right-1 inline-block w-2 h-2 rounded-full bg-red-500" />
+					</button>
+
+					{/* user avatar */}
+					<img
+						src={userAvatar}
+						alt="User avatar"
+						className="w-[82px] h-[82px] rounded-full object-cover border border-black/10"
+					/>
+				</div>
 			</div>
 		</header>
 	);

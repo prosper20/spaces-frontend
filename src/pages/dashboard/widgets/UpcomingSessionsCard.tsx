@@ -1,6 +1,7 @@
 import React from "react";
-import Card1 from "../../../components/Card1";
-import Shadow1, { Shadow2 } from "../../../components/Shadows";
+import Card1 from "../../../components/UI/Input/Card1";
+import Shadow1, { Shadow2 } from "../../../components/UI/Input/Shadows";
+import CtaButton1 from "../../../components/ButtonComponents/CtaButtons";
 
 interface Session {
 	id: string;
@@ -33,7 +34,7 @@ const UpcomingSessionsCard: React.FC<Props> = ({
 }) => (
 	<Card1
 		header={"Upcoming sessions"}
-		buttonText="view all"
+		buttonText="View all"
 		className="w-[328px] h-[232px]"
 		headButton
 		isStroked
@@ -59,9 +60,7 @@ const UpcomingSessionsCard: React.FC<Props> = ({
 						<p className="text-[12px] text-gray-500">{s.subtitle}</p>
 					</div>
 
-					<button className="text-[12px] bg-lightpink w-[59px] h-[20px] font-header1  text-gray-400 rounded-md hover:opacity-90">
-						Join
-					</button>
+					<CtaButton1>Join</CtaButton1>
 				</Shadow1>
 			))}
 		</ul>

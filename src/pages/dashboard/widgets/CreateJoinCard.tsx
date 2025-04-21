@@ -1,4 +1,4 @@
-import Card1 from "../../../components/Card1";
+import Card1 from "../../../components/UI/Input/Card1";
 
 const plus = "Plus.svg";
 
@@ -12,7 +12,7 @@ const CreateJoinCard = () => (
 			<button
 				aria-label="create or join"
 				className="
-        w-[82px] h-[82px] self-center rounded-full shadow-joincircle bg-[#E7B2A6]
+        w-[82px] h-[82px] self-center rounded-full shadow-joincircle bg-lightpink
         text-text-100 hover:bg-[#d89c94] flex justify-center items-center ease-in-out duration-700 transition
       "
 			>

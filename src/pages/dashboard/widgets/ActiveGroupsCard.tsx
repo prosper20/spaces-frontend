@@ -1,8 +1,8 @@
 import { Box } from "lucide-react";
 
 import React from "react";
-import Card1 from "../../../components/Card1";
-import Shadow1 from "../../../components/Shadows";
+import Card1 from "../../../components/UI/Input/Card1";
+import Shadow1 from "../../../components/UI/Input/Shadows";
 
 export interface Group {
 	id: string;

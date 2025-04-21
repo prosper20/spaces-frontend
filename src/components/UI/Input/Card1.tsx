@@ -40,3 +40,16 @@ const Card1: React.FC<CardProps> = ({
 };
 
 export default Card1;
+
+interface Card2Prop {
+	className?: string;
+	children: React.ReactNode;
+}
+
+export const Card2: React.FC<Card2Prop> = ({ className, children }) => {
+	return (
+		<div className={`shadow-box-shadow1 flex flex-col ${className}`}>
+			{children}
+		</div>
+	);
+};
