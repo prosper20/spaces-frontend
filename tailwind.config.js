@@ -23,7 +23,7 @@ export default {
 			"calendar-date": "0px 4px 4px 0px #00000040",
 			"agenda-shadow": "0px 0px 4px 0px #D8C4AA7A",
 			"search-bar": "4px 4px 10px 5px #D8C4AA",
-			"right-sidebar": "-4px 4px 10px 0px #D8C4AA"
+			"right-sidebar": "-4px 4px 10px 0px #D8C4AA",
 		},
 		extend: {
 			fontFamily: {
