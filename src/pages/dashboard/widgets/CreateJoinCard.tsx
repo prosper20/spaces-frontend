@@ -3,11 +3,7 @@ import Card1 from "../../../components/UI/Input/Card1";
 const plus = "Plus.svg";
 
 const CreateJoinCard = () => (
-	<Card1
-		header={"Create / Join Group"}
-		className="w-[328px] h-[232px]"
-		isStroked
-	>
+	<Card1 header={"Create / Join Group"} className=" h-[232px]" isStroked>
 		<div className="flex justify-end items-end mt-[60px] pr-[31px]">
 			<button
 				aria-label="create or join"

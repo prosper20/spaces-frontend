@@ -35,7 +35,7 @@ const UpcomingSessionsCard: React.FC<Props> = ({
 	<Card1
 		header={"Upcoming sessions"}
 		buttonText="View all"
-		className="w-[328px] h-[232px]"
+		className="h-[232px]"
 		headButton
 		isStroked
 	>

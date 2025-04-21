@@ -25,11 +25,7 @@ const mockGroups: Group[] = [
 const users = "Vector.svg";
 
 const ActiveGroupsCard: React.FC<Props> = ({ groups = mockGroups }) => (
-	<Card1
-		header={"Active Groups"}
-		className="lg:row-span-2 w-[328px] h-[471px]"
-		isStroked
-	>
+	<Card1 header={"Active Groups"} className="lg:row-span-2 h-[471px]" isStroked>
 		<button className="text-[14px] text-right px-[25px] mt-[24px] font-header1 underline underline-offset-[24.5%] text-lightpink hover:underline">
 			View all
 		</button>

@@ -51,64 +51,67 @@ type Props = {
 
 const DashboardSidebar: React.FC<Props> = ({ className = "", onLinkClick }) => {
 	const baseLinkClasses =
-		"flex items-center gap-3 px-6 py-3 rounded-lg text-sm font-medium transition";
+		"flex items-center gap-[16px] pl-[66px] pt-[13px] pb-[23px] h-[72px] rounded-tr-[10px] text-[24px] text-border font-header2 transition";
 
 	return (
 		<aside
 			className={`
-        bg-[#B28B50] text-text-100 flex flex-col
-        w-64 lg:w-[220px] shrink-0 h-full
+        bg-sidebar-200 text-text-100 flex flex-col
+        w-[320px] lg:w-[280px] shrink-0 h-full
         ${className}
       `}
 		>
 			{/* Logo block */}
-			<div className="flex items-center gap-2 h-20 pl-6 pr-4">
-				<img src={Logo} className="w-7 h-7" alt="Spaces logo" />
-				<span className="text-xl font-extrabold tracking-wide">SPACES</span>
+			<div className="flex items-center gap-[16px] h-[60px] px-[26px] mt-[38px]">
+				<img src={Logo} className="w-[56px] h-[56px]" alt="Spaces logo" />
+				<span className="text-[40px] text-text-100 font-header tracking-wide">
+					SPACES
+				</span>
 			</div>
 
-			{/* Navigation */}
-			<nav className="flex-1 overflow-y-auto mt-4 space-y-2">
-				{MAIN_LINKS.map(({ to, label, icon: Icon }) => (
-					<NavLink
-						key={to}
-						to={to}
-						className={({ isActive }) =>
-							[
-								baseLinkClasses,
-								isActive
-									? "bg-background-100/60 font-semibold"
-									: "hover:bg-background-100/40",
-							].join(" ")
-						}
-						onClick={onLinkClick}
-					>
-						<Icon size={20} variant="Outline" />
-						{label}
-					</NavLink>
-				))}
-			</nav>
+			<div className="flex flex-col h-[85%]">
+				{/* Navigation */}
+				<nav className="flex-1 justify-start overflow-y-auto mt-[72px] space-y-2">
+					{MAIN_LINKS.map(({ to, label, icon: Icon }) => (
+						<NavLink
+							key={to}
+							to={to}
+							end
+							className={({ isActive }) =>
+								[
+									baseLinkClasses,
+									isActive ? "bg-background-100" : "hover:bg-background-100/40",
+								].join(" ")
+							}
+							onClick={onLinkClick}
+						>
+							<Icon size={20} variant="Outline" />
+							{label}
+						</NavLink>
+					))}
+				</nav>
 
-			{/* Bottom section */}
-			<div className="pb-6 space-y-2">
-				{SECONDARY_LINKS.map(({ to, label, icon: Icon }) => (
-					<NavLink
-						key={to}
-						to={to}
-						className={({ isActive }) =>
-							[
-								baseLinkClasses,
-								isActive
-									? "bg-background-100/60 font-semibold"
-									: "hover:bg-background-100/40",
-							].join(" ")
-						}
-						onClick={onLinkClick}
-					>
-						<Icon size={20} variant="Outline" />
-						{label}
-					</NavLink>
-				))}
+				{/* Bottom section */}
+				<div className="pb-6 space-y-2 justify-end">
+					{SECONDARY_LINKS.map(({ to, label, icon: Icon }) => (
+						<NavLink
+							key={to}
+							to={to}
+							className={({ isActive }) =>
+								[
+									baseLinkClasses,
+									isActive
+										? "bg-background-100 "
+										: "hover:bg-background-100/40",
+								].join(" ")
+							}
+							onClick={onLinkClick}
+						>
+							<Icon size={20} variant="Outline" />
+							{label}
+						</NavLink>
+					))}
+				</div>
 			</div>
 		</aside>
 	);

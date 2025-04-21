@@ -38,7 +38,7 @@ const iconMap = {
 const ContributionsCard: React.FC<Props> = ({ items = sampleItems }) => (
 	<Card1
 		header={"Contributions"}
-		className="w-[328px] h-[232px]"
+		className="h-[232px]"
 		isStroked
 		style={{ fontWeight: "400" }}
 	>

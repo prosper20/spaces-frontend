@@ -10,9 +10,13 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useState } from "react";
 import { Card2 } from "../../../components/UI/Input/Card1";
 
+interface CalendarWidgetProps {
+	className?: string;
+}
+
 const weekdays = ["S", "M", "T", "W", "T", "F", "S"];
 
-const CalendarWidget: React.FC = () => {
+const CalendarWidget: React.FC<CalendarWidgetProps> = ({ className }) => {
 	const [month, setMonth] = useState<Date>(new Date());
 
 	const days = eachDayOfInterval({
@@ -24,7 +28,9 @@ const CalendarWidget: React.FC = () => {
 	console.log(padStart);
 
 	return (
-		<Card2 className="rounded-[20px] pt-[23px] w-[357px] h-[auto] pl-[15px] pr-[13px] bg-background-primary pb-[25px]">
+		<Card2
+			className={`rounded-[20px] pt-[23px] h-[auto] pl-[15px] pr-[13px] bg-background-primary pb-[25px] ${className}`}
+		>
 			{/* Header */}
 			<div className="flex items-center justify-between">
 				<button onClick={() => setMonth(addMonths(month, -1))}>

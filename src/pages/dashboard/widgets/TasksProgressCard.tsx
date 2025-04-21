@@ -15,7 +15,7 @@ const TasksProgressCard: React.FC<Props> = ({
 	notStarted = 20,
 }) => {
 	return (
-		<Card1 header={"Task"} className="w-[328px] h-[232px] gap-4" isStroked>
+		<Card1 header={"Task"} className=" h-[232px] gap-4" isStroked>
 			{/* Donut Chart */}
 
 			<DonutChart

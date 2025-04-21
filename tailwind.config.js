@@ -23,6 +23,7 @@ export default {
 			"calendar-date": "0px 4px 4px 0px #00000040",
 			"agenda-shadow": "0px 0px 4px 0px #D8C4AA7A",
 			"search-bar": "4px 4px 10px 5px #D8C4AA",
+			"right-sidebar": "-4px 4px 10px 0px #D8C4AA"
 		},
 		extend: {
 			fontFamily: {
@@ -72,7 +73,7 @@ export default {
 				text: { 100: "#2E2E2E" },
 				text: { 200: "#2E2E2E94" },
 				button: { 100: "#B28B50" },
-				sidebar: { 100: "#B28B50" },
+				sidebar: { 100: "#B28B50", 200: "#BCA27C" },
 				card: { 100: "#FFFFFF" },
 				border: "#5C4033",
 			},

@@ -8,41 +8,50 @@ import ActiveGroupsCard from "./widgets/ActiveGroupsCard";
 import UpcomingSessionsCard from "./widgets/UpcomingSessionsCard";
 import AgendaCard from "./widgets/AgendaCard";
 import ContributionsCard from "./widgets/ContributionsCard";
+import DashboardDetailsBar from "../../components/layout/DashboardDetailsBar";
 
 const DashboardHome: React.FC = () => {
 	/** You can fetch data for the cards with React‑Query hooks here */
 
 	return (
-		<section className="space-y-8">
+		<section>
+			<DashboardDetailsBar>
+				<CalendarWidget className="mb-[48px]" />
+				<AgendaCard />
+			</DashboardDetailsBar>
 			{/* ───────────── Greeting header ───────────── */}
-			<header>
-				<h1 className="text-[36px] font-header text-text-100">Welcome Back,</h1>
-				<p className="font-header1 text-[24px] text-text-100/[71%]">
-					Darlene Robertson
-				</p>
-			</header>
+			<div className="space-y-8 mr-[392px]">
+				<header>
+					<h1 className="text-[36px] font-header text-text-100">
+						Welcome Back,
+					</h1>
+					<p className="font-header1 text-[24px] text-text-100/[71%] mb-[58px]">
+						Darlene Robertson
+					</p>
+				</header>
 
-			{/* ───────────── Cards grid ───────────── */}
-			<div
-				className="
-          grid gap-6
-          lg:grid-cols-[repeat(3,minmax(0,1fr))]
+				{/* ───────────── Cards grid ───────────── */}
+
+				<div
+					className="
+          grid gap-[24px] gap-y-[43px]
+          lg:grid-cols-[repeat(2,minmax(0,1fr))]
           md:grid-cols-2
           grid-cols-1
+		
         "
-			>
-				{/* Row 1 */}
-				<CreateJoinCard />
-				<TasksProgressCard />
-				<CalendarWidget />
+				>
+					{/* Row 1 */}
+					<CreateJoinCard />
+					<TasksProgressCard />
 
-				{/* Row 2 */}
-				<ActiveGroupsCard />
-				<UpcomingSessionsCard />
-				<AgendaCard />
+					{/* Row 2 */}
+					<ActiveGroupsCard />
+					<UpcomingSessionsCard />
 
-				{/* Row 3 */}
-				<ContributionsCard />
+					{/* Row 3 */}
+					<ContributionsCard />
+				</div>
 			</div>
 		</section>
 	);
