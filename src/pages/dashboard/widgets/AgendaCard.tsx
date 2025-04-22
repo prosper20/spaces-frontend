@@ -11,6 +11,7 @@ interface AgendaItem {
 
 interface Props {
 	items?: AgendaItem[];
+	className?: string;
 }
 
 const sample: AgendaItem[] = [
@@ -40,9 +41,9 @@ const tagColor: Record<AgendaItem["tag"], string> = {
 	Cloud: "bg-primary-button-yellow",
 };
 
-const AgendaCard: React.FC<Props> = ({ items = sample }) => (
-	<div>
-		<h3 className="text-[14px] font-header1 text-text-100 mb-[32px]">
+const AgendaCard: React.FC<Props> = ({ className, items = sample }) => (
+	<div className={`${className}`}>
+		<h3 className={`text-[14px] font-header1 text-text-100 mb-[32px]`}>
 			Agenda for the day
 		</h3>
 

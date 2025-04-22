@@ -35,10 +35,13 @@ const iconMap = {
 	reply: CornerUpRight,
 };
 
-const ContributionsCard: React.FC<Props> = ({ items = sampleItems }) => (
+const ContributionsCard: React.FC<Props> = ({
+	className,
+	items = sampleItems,
+}) => (
 	<Card1
 		header={"Contributions"}
-		className="h-[232px]"
+		className={`h-[232px] ${className}`}
 		isStroked
 		style={{ fontWeight: "400" }}
 	>

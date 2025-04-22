@@ -13,6 +13,8 @@ export default {
 			lg: "1024px",
 			xl: "1280px",
 			xxl: "1536px",
+			'max-mm': { 'max': '1408px' },
+			'max-mw': { 'max': '1023px' },
 		},
 		boxShadow: {
 			"box-shadow1": "4px 4px 10px 0px #D8C4AA",

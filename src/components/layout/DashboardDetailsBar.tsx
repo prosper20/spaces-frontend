@@ -9,7 +9,7 @@ const DashboardDetailsBar: React.FC<DetailsBarProp> = ({
 }) => {
 	return (
 		<div
-			className={`w-[392px] h-[85vh] pl-[17px] pr-[18px] pt-[168px] pb-[23px] shadow-right-sidebar overflow-x-hidden top-[100px] fixed right-0 ${className}`}
+			className={`w-[392px] h-[85vh] pl-[17px] pr-[18px] pt-[168px] pb-[23px] max-mw:block shadow-right-sidebar max-mm:flex max-mm:w-full max-mm:gap-[24px] max-mm:p-0 max-mm:justify-between max-mm:pr-1 max-mm:h-[30vw]  ${className}`}
 		>
 			{children}
 		</div>

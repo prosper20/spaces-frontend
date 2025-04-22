@@ -7,15 +7,17 @@ interface Props {
 	completed?: number;
 	inProgress?: number;
 	notStarted?: number;
+	className?: string;
 }
 
 const TasksProgressCard: React.FC<Props> = ({
 	completed = 60,
 	inProgress = 20,
 	notStarted = 20,
+	className,
 }) => {
 	return (
-		<Card1 header={"Task"} className=" h-[232px] gap-4" isStroked>
+		<Card1 header={"Task"} className={`h-[232px] gap-4 ${className}`} isStroked>
 			{/* Donut Chart */}
 
 			<DonutChart

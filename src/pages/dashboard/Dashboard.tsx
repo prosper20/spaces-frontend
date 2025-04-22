@@ -14,13 +14,9 @@ const DashboardHome: React.FC = () => {
 	/** You can fetch data for the cards with React‑Query hooks here */
 
 	return (
-		<section>
-			<DashboardDetailsBar>
-				<CalendarWidget className="mb-[48px]" />
-				<AgendaCard />
-			</DashboardDetailsBar>
+		<section className="flex justify-between gap-[15px] max-mm:grid max-mm:grid-cols-1 ">
 			{/* ───────────── Greeting header ───────────── */}
-			<div className="space-y-8 mr-[392px]">
+			<div className="space-y-8] flex-1">
 				<header>
 					<h1 className="text-[36px] font-header text-text-100">
 						Welcome Back,
@@ -34,25 +30,35 @@ const DashboardHome: React.FC = () => {
 
 				<div
 					className="
-          grid gap-[24px] gap-y-[43px]
-          lg:grid-cols-[repeat(2,minmax(0,1fr))]
-          md:grid-cols-2
-          grid-cols-1
-		
+          md:flex md:justify-between md:gap-[24px] max-mm:pr-1 mb-[48px]
+
         "
 				>
 					{/* Row 1 */}
-					<CreateJoinCard />
-					<TasksProgressCard />
-
-					{/* Row 2 */}
-					<ActiveGroupsCard />
-					<UpcomingSessionsCard />
-
-					{/* Row 3 */}
-					<ContributionsCard />
+					<CreateJoinCard className="flex-1 max-mw:mb-11" />
+					<TasksProgressCard className="flex-1" />
 				</div>
+
+				<div
+					className="
+          md:flex md:justify-between md:gap-[24px] max-mm:pr-1
+
+        "
+				>
+					{/* Row 2 */}
+					<ActiveGroupsCard className="flex-1 max-mw:mb-11" />
+					<div className="flex-1">
+						<UpcomingSessionsCard className="max-mw:mb-11" />
+						<ContributionsCard className="mt-[6px] max-mw:mb-8" />
+					</div>
+				</div>
+
+				{/* Row 3 */}
 			</div>
+			<DashboardDetailsBar>
+				<CalendarWidget className="mb-[48px] max-mm:flex-1" />
+				<AgendaCard className="max-mm:flex-1" />
+			</DashboardDetailsBar>
 		</section>
 	);
 };

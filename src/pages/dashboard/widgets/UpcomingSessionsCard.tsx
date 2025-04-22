@@ -12,6 +12,7 @@ interface Session {
 
 interface Props {
 	sessions?: Session[];
+	className?: string;
 }
 
 const sampleSessions: Session[] = [
@@ -30,12 +31,13 @@ const sampleSessions: Session[] = [
 ];
 
 const UpcomingSessionsCard: React.FC<Props> = ({
+	className,
 	sessions = sampleSessions,
 }) => (
 	<Card1
 		header={"Upcoming sessions"}
 		buttonText="View all"
-		className="h-[232px]"
+		className={`h-[232px] ${className}`}
 		headButton
 		isStroked
 	>
