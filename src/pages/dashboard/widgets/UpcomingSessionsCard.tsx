@@ -1,4 +1,7 @@
 import React from "react";
+import Card1 from "../../../components/UI/Input/Card1";
+import Shadow1, { Shadow2 } from "../../../components/UI/Input/Shadows";
+import CtaButton1 from "../../../components/ButtonComponents/CtaButtons";
 
 interface Session {
 	id: string;
@@ -9,6 +12,7 @@ interface Session {
 
 interface Props {
 	sessions?: Session[];
+	className?: string;
 }
 
 const sampleSessions: Session[] = [
@@ -27,44 +31,42 @@ const sampleSessions: Session[] = [
 ];
 
 const UpcomingSessionsCard: React.FC<Props> = ({
+	className,
 	sessions = sampleSessions,
 }) => (
-	<div className="rounded-lg bg-white shadow-sm border border-gray-200 flex flex-col">
-		<header className="flex items-center justify-between px-6 py-4 border-b">
-			<h3 className="text-lg font-semibold">Upcoming Sessions</h3>
-			<button className="text-xs text-button-100 hover:underline">
-				View all
-			</button>
-		</header>
-
+	<Card1
+		header={"Upcoming sessions"}
+		buttonText="View all"
+		className={`h-[232px] ${className}`}
+		headButton
+		isStroked
+	>
 		<ul className="divide-y divide-gray-100">
 			{sessions.map((s) => (
-				<li
+				<Shadow1
 					key={s.id}
-					className="flex justify-between items-center px-4 py-3 text-sm"
+					className="h-[62px] mt-[11px] mx-[16px] py-[10px] text-[#747373] pr-[13px] justify-start flex items-center gap-[10px]"
 				>
 					{/* Date pill */}
-					<div className="flex flex-col items-center mr-2">
-						<span className="bg-background-100 text-text-100 rounded-t-md px-2 text-[10px]">
+					<Shadow2 className="flex flex-col w-[57px] h-[62px] justify-center items-center">
+						<span className="text-lightpink text-[12px] font-header2">
 							{new Date(s.date).toLocaleString("en", { month: "short" })}
 						</span>
-						<span className="bg-button-100 text-white rounded-b-md px-2 text-[11px] font-semibold">
+						<span className="text-lightpink text-[18px] font-header2">
 							{new Date(s.date).getDate()}
 						</span>
+					</Shadow2>
+
+					<div className=" w-[146px]">
+						<p className="font-header2 text-[14px] text-text-100 ">{s.title}</p>
+						<p className="text-[12px] text-gray-500">{s.subtitle}</p>
 					</div>
 
-					<div className="flex-1">
-						<p className="font-medium">{s.title}</p>
-						<p className="text-xs text-gray-500">{s.subtitle}</p>
-					</div>
-
-					<button className="text-xs bg-[#ddb6ad] px-3 py-1 rounded-md hover:opacity-90">
-						Join
-					</button>
-				</li>
+					<CtaButton1>Join</CtaButton1>
+				</Shadow1>
 			))}
 		</ul>
-	</div>
+	</Card1>
 );
 
 export default UpcomingSessionsCard;

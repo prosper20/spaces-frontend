@@ -1,4 +1,6 @@
 import React from "react";
+import { CtaButton2 } from "../../../components/ButtonComponents/CtaButtons";
+import { Shadow2 } from "../../../components/UI/Input/Shadows";
 
 interface AgendaItem {
 	id: string;
@@ -9,6 +11,7 @@ interface AgendaItem {
 
 interface Props {
 	items?: AgendaItem[];
+	className?: string;
 }
 
 const sample: AgendaItem[] = [
@@ -33,27 +36,31 @@ const sample: AgendaItem[] = [
 ];
 
 const tagColor: Record<AgendaItem["tag"], string> = {
-	Design: "bg-pink-600",
-	AI: "bg-green-800",
-	Cloud: "bg-yellow-500",
+	Design: "bg-active-calendar",
+	AI: "bg-primary-button-green",
+	Cloud: "bg-primary-button-yellow",
 };
 
-const AgendaCard: React.FC<Props> = ({ items = sample }) => (
-	<div className="rounded-lg bg-white shadow-sm border border-gray-200 flex flex-col">
-		<h3 className="px-6 py-4 text-lg font-semibold border-b">
+const AgendaCard: React.FC<Props> = ({ className, items = sample }) => (
+	<div className={`${className}`}>
+		<h3 className={`text-[14px] font-header1 text-text-100 mb-[32px]`}>
 			Agenda for the day
 		</h3>
-		<ul>
+
+		<ul className="flex flex-col gap-[25px]">
 			{items.map((item) => (
-				<li key={item.id} className="flex items-center gap-4 px-6 py-3">
-					<span
-						className={`text-xs text-white px-3 py-1 rounded-full ${tagColor[item.tag]}`}
-					>
-						{item.tag}
-					</span>
+				<Shadow2
+					key={item.id}
+					className="bg-background-primary !shadow-agenda-shadow flex w-full h-[72px] !rounded-[15px] px-[11px] py-[10px] gap-[19px]"
+				>
 					<div>
-						<p className="font-medium">{item.title}</p>
-						<p className="text-xs text-gray-500">
+						<CtaButton2 className={tagColor[item.tag]}> {item.tag}</CtaButton2>
+					</div>
+					<div>
+						<p className="text-[16px] font-header1 text-text-100">
+							{item.title}
+						</p>
+						<p className="text-[12px] font-header1 text-gray-600/[52%] mt-[3px]">
 							{new Date(item.datetime).toLocaleString("en", {
 								month: "short",
 								day: "numeric",
@@ -63,7 +70,7 @@ const AgendaCard: React.FC<Props> = ({ items = sample }) => (
 							})}
 						</p>
 					</div>
-				</li>
+				</Shadow2>
 			))}
 		</ul>
 	</div>

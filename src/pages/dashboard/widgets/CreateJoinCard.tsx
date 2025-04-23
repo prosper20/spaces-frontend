@@ -1,20 +1,29 @@
-import { Plus } from "lucide-react";
+import Card1 from "../../../components/UI/Input/Card1";
 
-const CreateJoinCard = () => (
-	<div className="rounded-lg bg-white shadow-sm border border-gray-200 p-6 flex flex-col">
-		<h3 className="text-lg font-semibold mb-4">Create / Join Group</h3>
+const plus = "Plus.svg";
 
-		<button
-			aria-label="create or join"
-			className="
-        w-14 h-14 self-center rounded-full bg-[#E7B2A6]
-        text-text-100 flex items-center justify-center
-        hover:bg-[#d89c94] transition
+interface Props {
+	className?: string;
+}
+
+const CreateJoinCard: React.FC<Props> = ({ className }) => (
+	<Card1
+		header={"Create / Join Group"}
+		className={`h-[232px] ${className}`}
+		isStroked
+	>
+		<div className="flex justify-end items-end mt-[60px] pr-[31px]">
+			<button
+				aria-label="create or join"
+				className="
+        w-[82px] h-[82px] self-center rounded-full shadow-joincircle bg-lightpink
+        text-text-100 hover:bg-[#d89c94] flex justify-center items-center ease-in-out duration-700 transition
       "
-		>
-			<Plus size={28} />
-		</button>
-	</div>
+			>
+				<img src={plus} alt="image of plus" className="mt-6 w-[40px]" />
+			</button>
+		</div>
+	</Card1>
 );
 
 export default CreateJoinCard;

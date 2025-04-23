@@ -8,79 +8,59 @@ import ActiveGroupsCard from "./widgets/ActiveGroupsCard";
 import UpcomingSessionsCard from "./widgets/UpcomingSessionsCard";
 import AgendaCard from "./widgets/AgendaCard";
 import ContributionsCard from "./widgets/ContributionsCard";
+import DashboardDetailsBar from "../../components/layout/DashboardDetailsBar";
 
 const DashboardHome: React.FC = () => {
 	/** You can fetch data for the cards with React‑Query hooks here */
 
 	return (
-		<section className="space-y-8">
+		<section className="flex justify-between gap-[15px] max-mm:grid max-mm:grid-cols-1 ">
 			{/* ───────────── Greeting header ───────────── */}
-			<header>
-				<h1 className="text-[clamp(1.5rem,2vw+1rem,2rem)] font-bold">
-					Welcome Back,
-				</h1>
-				<p className="text-lg font-semibold text-text-100">Darlene Robertson</p>
-			</header>
+			<div className="space-y-8] flex-1">
+				<header>
+					<h1 className="text-[36px] font-header text-text-100">
+						Welcome Back,
+					</h1>
+					<p className="font-header1 text-[24px] text-text-100/[71%] mb-[58px]">
+						Darlene Robertson
+					</p>
+				</header>
 
-			{/* ───────────── Cards grid ───────────── */}
-			<div
-				className="
-          grid gap-6
-          lg:grid-cols-[repeat(3,minmax(0,1fr))]
-          md:grid-cols-2
-          grid-cols-1
+				{/* ───────────── Cards grid ───────────── */}
+
+				<div
+					className="
+          md:flex md:justify-between md:gap-[24px] max-mm:pr-1 mb-[48px]
+
         "
-			>
-				{/* Row 1 */}
-				<CreateJoinCard />
-				<TasksProgressCard />
-				<CalendarWidget />
+				>
+					{/* Row 1 */}
+					<CreateJoinCard className="flex-1 max-mw:mb-11" />
+					<TasksProgressCard className="flex-1" />
+				</div>
 
-				{/* Row 2 */}
-				<ActiveGroupsCard className="lg:row-span-2" />
-				<UpcomingSessionsCard />
-				<AgendaCard />
+				<div
+					className="
+          md:flex md:justify-between md:gap-[24px] max-mm:pr-1
+
+        "
+				>
+					{/* Row 2 */}
+					<ActiveGroupsCard className="flex-1 max-mw:mb-11" />
+					<div className="flex-1">
+						<UpcomingSessionsCard className="max-mw:mb-11" />
+						<ContributionsCard className="mt-[6px] max-mw:mb-8" />
+					</div>
+				</div>
 
 				{/* Row 3 */}
-				<ContributionsCard className="md:col-span-2" />
 			</div>
+			<DashboardDetailsBar>
+				<CalendarWidget className="mb-[48px] max-mm:flex-1" />
+				<AgendaCard className="max-mm:flex-1" />
+			</DashboardDetailsBar>
 		</section>
 	);
 };
 
 export default DashboardHome;
-
-// const Dashboard = () => {
-// 	return (
-// 		<div className="flex h-screen bg-background-100">
-// 			<DashboardSidebar />
-// 			<div className="flex-1 flex flex-col">
-// 				<DashboardTopbar />
-// 				<main className="flex-1 overflow-y-auto lg:p-8 p-4">
-// 					{/* grid for the widgets */}
-// 					<section
-// 						className="
-//           grid gap-6
-//           lg:grid-cols-[repeat(3,minmax(0,1fr))]
-//           md:grid-cols-2
-//           grid-cols-1
-//         "
-// 					>
-// 						{/* Row 1 */}
-// 						<CreateJoinCard />
-// 						<TasksProgressCard />
-// 						<CalendarWidget />
-// 						{/* Row 2 */}
-// 						<ActiveGroupsCard className="lg:row-span-2" />
-// 						<UpcomingSessionsCard />
-// 						<AgendaCard />
-// 						{/* Row 3 */}
-// 						<ContributionsCard className="md:col-span-2" />
-// 					</section>
-// 				</main>
-// 			</div>
-// 		</div>
-// 	);
-// };
-
-// export default Dashboard;
