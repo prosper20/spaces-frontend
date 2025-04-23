@@ -20,7 +20,7 @@ export default {
 		boxShadow: {
 			"box-shadow1": "4px 4px 10px 0px #D8C4AA",
 			"box-shadow2": "0px 0px 8px 0px #00000040",
-			"box-shadow3": '0px 0px 10px 2px #D8C4AA',
+			"box-shadow3": "0px 0px 10px 2px #D8C4AA",
 			joincircle: "4px 4px 8px 0px #D8C4AA66",
 			"plus-shadow": "0px 4px 4px 0px #00000040",
 			"chevrolet-shadow": "0px 0px 4px 0px #D8C4AA",

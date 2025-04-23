@@ -42,8 +42,10 @@ const tagColor: Record<AgendaItem["tag"], string> = {
 };
 
 const AgendaCard: React.FC<Props> = ({ className, items = sample }) => (
-	<div className={`${className}`}>
-		<h3 className={`text-[14px] font-header1 text-text-100 mb-[32px]`}>
+	<div className={`max-mw:pb-[80px] ${className}`}>
+		<h3
+			className={`text-[24px] font-header1 text-text-100 mb-[32px] max-mw:mt-[48px]`}
+		>
 			Agenda for the day
 		</h3>
 

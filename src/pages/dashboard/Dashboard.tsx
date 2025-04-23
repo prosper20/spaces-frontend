@@ -16,7 +16,7 @@ const DashboardHome: React.FC = () => {
 	return (
 		<section className="flex justify-between gap-[15px] max-mm:grid max-mm:grid-cols-1 ">
 			{/* ───────────── Greeting header ───────────── */}
-			<div className="space-y-8] flex-1">
+			<div className="space-y-8 flex-1">
 				<header>
 					<h1 className="text-[36px] font-header text-text-100">
 						Welcome Back,
@@ -30,13 +30,13 @@ const DashboardHome: React.FC = () => {
 
 				<div
 					className="
-          md:flex md:justify-between md:gap-[24px] max-mm:pr-1 mb-[48px]
+          md:flex md:justify-between md:gap-[24px] max-mm:pr-1 
 
         "
 				>
 					{/* Row 1 */}
-					<CreateJoinCard className="flex-1 max-mw:mb-11" />
-					<TasksProgressCard className="flex-1" />
+					<CreateJoinCard className="flex-1 " />
+					<TasksProgressCard className="flex-1 md:mt-[0px] mt-[40px]" />
 				</div>
 
 				<div
@@ -48,16 +48,16 @@ const DashboardHome: React.FC = () => {
 					{/* Row 2 */}
 					<ActiveGroupsCard className="flex-1 max-mw:mb-11" />
 					<div className="flex-1">
-						<UpcomingSessionsCard className="max-mw:mb-11" />
-						<ContributionsCard className="mt-[6px] max-mw:mb-8" />
+						<UpcomingSessionsCard className="" />
+						<ContributionsCard className="mt-[20px] max-mw:mb-8" />
 					</div>
 				</div>
 
 				{/* Row 3 */}
 			</div>
 			<DashboardDetailsBar>
-				<CalendarWidget className="mb-[48px] max-mm:flex-1" />
-				<AgendaCard className="max-mm:flex-1" />
+				<CalendarWidget className=" max-mm:flex-1" />
+				<AgendaCard className="max-mm:flex-1 mt-[48px] max-mm:mt-0" />
 			</DashboardDetailsBar>
 		</section>
 	);

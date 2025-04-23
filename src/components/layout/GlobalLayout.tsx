@@ -27,7 +27,7 @@ const GlobalLayout: React.FC = () => {
 					<DashboardTopbar onHamburgerClick={() => setDrawerOpen(true)} />
 
 					{/* Scrollable outlet (cards grid lives in each page) */}
-					<main className="flex-1 overflow-y-auto m-[13px] lg:ml-[3%] lg:mr-[18px] lg:mt-[21px] lg:mb-[23px]">
+					<main className="flex-1 overflow-y-auto mx-[13px] lg:ml-[3%] xxl:mr-[0px] lg:pt-[21px] xl:pb-[20px]">
 						<Outlet />
 					</main>
 				</div>

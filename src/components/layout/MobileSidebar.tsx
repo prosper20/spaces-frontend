@@ -41,7 +41,7 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({ open, onClose }) => (
 						{/* close icon */}
 						<button
 							onClick={onClose}
-							className="absolute top-4 right-4 text-white/80 hover:text-white focus:outline-none focus:ring-2 focus:ring-white rounded-full"
+							className="absolute top-4 left-9 text-white/80 hover:text-white focus:outline-none focus:ring-2 focus:ring-white rounded-full"
 						>
 							<X size={24} />
 						</button>
