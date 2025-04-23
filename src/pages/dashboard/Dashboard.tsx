@@ -16,7 +16,7 @@ const DashboardHome: React.FC = () => {
 	return (
 		<section className="flex justify-between gap-[15px] max-mm:grid max-mm:grid-cols-1 ">
 			{/* ───────────── Greeting header ───────────── */}
-			<div className="space-y-8 flex-1">
+			<div className="space-y-8 flex-1 max-mm:pt-14">
 				<header>
 					<h1 className="text-[36px] font-header text-text-100">
 						Welcome Back,

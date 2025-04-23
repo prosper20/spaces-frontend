@@ -15,6 +15,7 @@ export default {
 			xxl: "1536px",
 			"max-mm": { max: "1408px" },
 			"max-mw": { max: "1023px" },
+			"max-sw": { max: "500px" },
 			"max-bw": { max: "360px" },
 		},
 		boxShadow: {
