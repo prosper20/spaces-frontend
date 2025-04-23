@@ -9,6 +9,7 @@ import Login from "./pages/auth/Login";
 import GlobalLayout from "./components/layout/GlobalLayout";
 import Signup from "./pages/auth/Signup";
 import Welcome from "./pages/auth/Welcome.tsx";
+import Verification from "./pages/auth/Verification.tsx";
 
 /* dashboard pages */
 const DashboardHome = lazy(() => import("./pages/dashboard/Dashboard"));
@@ -123,6 +124,10 @@ const router = createBrowserRouter([
 	{
 		path: "/signup",
 		element: <Signup />,
+	},
+	{
+		path: "/verify",
+		element: <Verification />,
 	},
 ]);
 

@@ -37,13 +37,13 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({ open, onClose }) => (
 					leaveFrom="translate-x-0"
 					leaveTo="-translate-x-full"
 				>
-					<Dialog.Panel className="relative w-64 max-w-full">
+					<Dialog.Panel className="relative w-[320px]">
 						{/* close icon */}
 						<button
 							onClick={onClose}
-							className="absolute top-4 right-4 text-white/80 hover:text-white focus:outline-none focus:ring-2 focus:ring-white rounded-full"
+							className="absolute top-2 text-right right-2 text-white/80 hover:text-white focus:outline-none focus:ring-2 focus:ring-white rounded-full"
 						>
-							<X size={24} />
+							<X size={38} />
 						</button>
 
 						{/* Re‑use desktop sidebar nav; pass onLinkClick to auto‑close */}

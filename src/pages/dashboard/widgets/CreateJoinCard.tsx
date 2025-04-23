@@ -9,7 +9,7 @@ interface Props {
 const CreateJoinCard: React.FC<Props> = ({ className }) => (
 	<Card1
 		header={"Create / Join Group"}
-		className={`h-[232px] ${className}`}
+		className={`pb-[30px] ${className}`}
 		isStroked
 	>
 		<div className="flex justify-end items-end mt-[60px] pr-[31px]">

@@ -33,23 +33,24 @@ const DashboardTopbar: React.FC<DashboardTopbarProps> = ({
 		flex
 		w-full
 		justify-between
+		max-sw:h-[75px]
       "
 		>
 			<div
 				className="
          bg-background-100
         flex items-center gap-[104px]
-		xxl:w-full  justify-between lg:w-[659px] w-full
+		xxl:w-full  justify-between lg:w-[659px] w-full max-sw:h-[74px]
         
       "
 			>
 				{/* ───── Hamburger (mobile only) ──────────────────────────── */}
 				<button
 					onClick={onHamburgerClick}
-					className="lg:hidden p-2 rounded-md hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-button-100"
+					className="lg:hidden p-2 rounded-md hover:bg-black/5 focus:outline-none  focus:ring-2 focus:ring-button-100"
 					aria-label="Open sidebar"
 				>
-					<Menu size={22} />
+					<Menu size={35} className="max-sw:w-[27px]" />
 				</button>
 
 				{/* ───── Search bar (flex‑grown) ───────────────────────────── */}
@@ -91,7 +92,7 @@ const DashboardTopbar: React.FC<DashboardTopbarProps> = ({
 						className="relative p-2 rounded-md hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-button-100"
 						aria-label="Notifications"
 					>
-						<Bell size={38} className="text-text-100" />
+						<Bell size={38} className="text-text-100 w-[26px]" />
 						{/* red dot */}
 						<span className="absolute top-1 right-1 inline-block w-2 h-2 rounded-full bg-red-500" />
 					</button>
@@ -100,7 +101,7 @@ const DashboardTopbar: React.FC<DashboardTopbarProps> = ({
 					<img
 						src={userAvatar}
 						alt="User avatar"
-						className="w-[82px] h-[82px] rounded-full object-cover border border-black/10"
+						className="w-[82px] h-[82px] max-sw:w-[50px] max-sw:h-[50px] rounded-full object-cover border border-black/10"
 					/>
 				</div>
 			</div>

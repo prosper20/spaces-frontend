@@ -17,7 +17,7 @@ const TasksProgressCard: React.FC<Props> = ({
 	className,
 }) => {
 	return (
-		<Card1 header={"Task"} className={`h-[232px] gap-4 ${className}`} isStroked>
+		<Card1 header={"Task"} className={`pb-[30px] gap-4 ${className}`} isStroked>
 			{/* Donut Chart */}
 
 			<DonutChart

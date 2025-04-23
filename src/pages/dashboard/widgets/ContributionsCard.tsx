@@ -41,7 +41,7 @@ const ContributionsCard: React.FC<Props> = ({
 }) => (
 	<Card1
 		header={"Contributions"}
-		className={`h-[232px] ${className}`}
+		className={`pb-[30px] ${className}`}
 		isStroked
 		style={{ fontWeight: "400" }}
 	>

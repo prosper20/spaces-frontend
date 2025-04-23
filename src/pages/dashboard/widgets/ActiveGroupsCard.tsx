@@ -30,7 +30,7 @@ const ActiveGroupsCard: React.FC<Props> = ({
 }) => (
 	<Card1
 		header={"Active Groups"}
-		className={`lg:row-span-2 h-[471px] ${className}`}
+		className={`pb-[30px] lg:row-span-2 ${className}`}
 		isStroked
 	>
 		<button className="text-[14px] text-right px-[25px] mt-[24px] font-header1 underline underline-offset-[24.5%] text-lightpink hover:underline">
