@@ -14,12 +14,12 @@ export const URL = {
 	peopleToFollow: "/users/people-to-follow",
 };
 
-export const BASE_URL = import.meta.env.VITE_API_URL;
+export const BASE_URL = import.meta.env.VITE_APP_DOMAIN;
 
 const axiosInstance = function instance(token?: string) {
 	return axios.create({
 		baseURL: BASE_URL,
-		timeout: 5000, // 5 seconds timeout
+		// timeout: 5000, // 5 seconds timeout
 		withCredentials: true,
 		headers: token
 			? {

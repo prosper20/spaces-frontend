@@ -34,7 +34,7 @@ const LoginForm = () => {
 						token: res.data.accessToken,
 					},
 					userState: {
-						username: res.data.user.username,
+						username: res.data.fullName,
 					},
 				});
 				toast.success("Login Successful");
@@ -43,6 +43,7 @@ const LoginForm = () => {
 			}
 		},
 		onError: (error: AxiosError<{ message: string }>) => {
+			console.log(error);
 			toast.error(error?.response?.data?.message ?? "Login failed");
 		},
 	});
