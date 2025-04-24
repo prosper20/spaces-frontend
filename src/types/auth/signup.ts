@@ -9,14 +9,13 @@ export const signupSchema = z
 		passwordConfirm: z.string({
 			required_error: "Confirm password is required",
 		}),
-		firstName: z
-			.string({ required_error: "First name is required" })
-			.min(1, "First name is required"),
-		lastName: z
-			.string({ required_error: "Last name is required" })
-			.min(1, "Last name is required"),
+		fullName: z
+			.string({ required_error: "Full name is required" })
+			.min(1, "Full name is required"),
+		role: z.enum(["STUDENT", "SUPERVISOR"], {
+			required_error: "Role is required",
+		}),
 	})
-
 	.refine((data) => data.password === data.passwordConfirm, {
 		message: "Password must match",
 		path: ["passwordConfirm"],

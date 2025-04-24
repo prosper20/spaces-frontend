@@ -1,8 +1,8 @@
 export interface FormDataProps {
 	email: string;
 	password: string;
-	firstName: string;
-	lastName: string;
+	fullName: string;
+	role: string;
 	passwordConfirm: string;
 }
 export interface SearchProps {

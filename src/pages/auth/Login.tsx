@@ -11,6 +11,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { AxiosError } from "axios";
 import LoaderSpinnerSmall from "../../components/Loaders/LoaderSpinnerSmall";
 
+const endpoint = import.meta.env.VITE_APP_DOMAIN;
+
 const LoginForm = () => {
 	const {
 		register,
@@ -46,7 +48,7 @@ const LoginForm = () => {
 	});
 
 	const submitHandler = handleSubmit((data: TLogin) => {
-		mutate({ url: "/auth/login", data });
+		mutate({ url: `${endpoint}/api/auth/login`, data });
 	});
 
 	return (

@@ -102,3 +102,52 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
 		);
 	}
 );
+import { FieldError } from "react-hook-form";
+
+type Option = {
+	label: string;
+	value: string;
+};
+
+type SelectInputProps = {
+	id: string;
+	options: Option[];
+	error?: FieldError;
+	icon?: React.ElementType;
+} & React.SelectHTMLAttributes<HTMLSelectElement>;
+
+export const SelectInput = forwardRef<HTMLSelectElement, SelectInputProps>(
+	({ id, options, error, icon: Icon, ...rest }, ref) => {
+		return (
+			<div className=" relative w-full">
+				{/* Icon on the left-hand side */}
+				{Icon && (
+					<div className="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none text-gray-500">
+						<Icon size="14" color="#808080" variant="TwoTone" />
+					</div>
+				)}
+
+				<select
+					id={id}
+					ref={ref}
+					{...rest}
+					className={`w-full appearance-none p-4 pl-12 pr-8 text-[14px] rounded-[12px] border  focus:caret-primary-300 focus:border-primary-300 bg-transparent  ${
+						error ? "border-red-500" : "border-gray-200"
+					}  focus:outline-none text-slate-400/80 font-[100] `}
+				>
+					<option value="">Role</option>
+					{options.map((opt) => (
+						<option key={opt.value} value={opt.value}>
+							{opt.label}
+						</option>
+					))}
+				</select>
+
+				{/* Error text */}
+				{error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+			</div>
+		);
+	}
+);
+
+SelectInput.displayName = "SelectInput";
