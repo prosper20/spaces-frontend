@@ -20,6 +20,7 @@ const axiosInstance = function instance(token?: string) {
 	return axios.create({
 		baseURL: BASE_URL,
 		timeout: 5000, // 5 seconds timeout
+		withCredentials: true,
 		headers: token
 			? {
 					"Content-Type": "application/json",

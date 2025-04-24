@@ -6,11 +6,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { genSaltSync, hashSync } from "bcrypt-ts";
 
-import { FormInput } from "../../components/UI/Input/Inputs";
+import { FormInput, SelectInput } from "../../components/UI/Input/Inputs";
 import { signupSchema, TSignup } from "../../types/auth/signup";
 import { PostRequest } from "../../utils/url";
 import { useAppContext } from "../../context/AppContext";
 import Logo from "../../assets/Logo/logo.svg";
+
+const endpoint = import.meta.env.VITE_APP_DOMAIN;
 
 const Signup = () => {
 	const {
@@ -29,11 +31,12 @@ const Signup = () => {
 		mutationFn: PostRequest,
 		onSuccess: (res) => {
 			if (res.status === 200) {
-				navigate("/email-verification");
+				navigate("/verify");
 				reset();
 			}
 		},
 		onError: () => {
+			console.log("error");
 			toast.error("This email already exists.");
 		},
 	});
@@ -44,12 +47,21 @@ const Signup = () => {
 		const hash = hashSync(data.password, salt);
 
 		const postData = {
-			url: "auth/register",
+			url: `${endpoint}/api/auth/signup`,
 			data: { ...data, password: hash, passwordConfirm: hash },
 		};
 
 		mutate(postData);
 	});
+
+	// const submitHandler = handleSubmit(
+	// 	(data) => {
+	// 	  console.log("Submitted data:", data); // This should log
+	// 	},
+	// 	(errors) => {
+	// 	  console.log("Validation errors:", errors); // This helps debug
+	// 	}
+	//   );
 
 	return (
 		<div className="flex h-screen w-screen bg-[#F5F0EB] overflow-hidden">
@@ -84,10 +96,10 @@ const Signup = () => {
 						IconName={Profile}
 						autoComplete="on"
 						placeholder="Full Name"
-						{...register("firstName")} // fullName
+						{...register("fullName")} // fullName
 					/>
-					{errors.firstName && (
-						<p className="text-red-500 text-sm">{errors.firstName.message}</p>
+					{errors.fullName && (
+						<p className="text-red-500 text-sm">{errors.fullName.message}</p>
 					)}
 
 					<FormInput
@@ -103,18 +115,29 @@ const Signup = () => {
 						<p className="text-red-500 text-sm">{errors.email.message}</p>
 					)}
 
-					<FormInput
+					{/* <FormInput
 						id="role"
 						type="text"
 						icon
 						IconName={Profile}
 						autoComplete="on"
 						placeholder="Role Selection"
-						{...register("email")} //role
+						{...register("role")} //role
 					/>
 					{errors.email && (
 						<p className="text-red-500 text-sm">{errors.email.message}</p>
-					)}
+					)} */}
+
+					<SelectInput
+						id="role"
+						icon={Profile}
+						options={[
+							{ label: "Student", value: "STUDENT" },
+							{ label: "Supervisor", value: "SUPERVISOR" },
+						]}
+						{...register("role")}
+						error={errors.role}
+					/>
 
 					<FormInput
 						id="password"
