@@ -36,13 +36,17 @@ const OtpVerification: React.FC<Props> = ({ header, emails = "Jason" }) => {
 					<div className="flex justify-center items-center gap-3">
 						{otp.map((digits: string, index: number) => {
 							return (
-								<InputOtp
-									key={index}
-									index={index}
-									value={digits}
-									setOtp={setOtp}
-									otp={otp}
-								/>
+								<>
+									<InputOtp
+										key={index}
+										index={index}
+										value={digits}
+										setOtp={setOtp}
+										otp={otp}
+									/>
+									<input type="hidden" name="otp" value={otp.join("")} />
+									<input type="hidden" name="email" value={"jason"} />
+								</>
 							);
 						})}
 					</div>

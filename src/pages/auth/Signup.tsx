@@ -45,7 +45,7 @@ const Signup = () => {
 		const hash = hashSync(data.password, salt);
 
 		const postData = {
-			url: `${BASE_URL}/api/auth/signup`,
+			url: `${BASE_URL}/auth/signup`,
 			data: { ...data, password: hash, passwordConfirm: hash },
 		};
 

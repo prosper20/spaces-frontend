@@ -10,6 +10,8 @@ import GlobalLayout from "./components/layout/GlobalLayout";
 import Signup from "./pages/auth/Signup";
 import Welcome from "./pages/auth/Welcome.tsx";
 import Verification from "./pages/auth/Verification.tsx";
+import { verifyOtpAction } from "./utils/url.ts";
+import EmailSuccess from "./pages/EmailSuccess.tsx";
 
 /* dashboard pages */
 const DashboardHome = lazy(() => import("./pages/dashboard/Dashboard"));
@@ -138,6 +140,11 @@ const router = createBrowserRouter([
 	{
 		path: "/verify",
 		element: <Verification />,
+		action: verifyOtpAction,
+	},
+	{
+		path: "/otpSuccess",
+		element: <EmailSuccess />,
 	},
 ]);
 
