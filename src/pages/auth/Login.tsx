@@ -114,7 +114,7 @@ const LoginForm = () => {
 					<button
 						type="submit"
 						disabled={loginMutation.isPending}
-						className="bg-[#B28B50] text-white font-semibold text-lg py-4 rounded-[12px] shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+						className="justify-center items-center w-full flex bg-[#B28B50] text-white font-semibold text-lg py-4 rounded-[12px] shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
 					>
 						{loginMutation.isPending ? <LoaderSpinnerSmall /> : "Login"}
 					</button>
