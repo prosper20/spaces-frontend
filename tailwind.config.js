@@ -85,7 +85,7 @@ export default {
 				progress: "#665949",
 				task1: "#C872F04F",
 				task2: "#FF4F046B",
-				taskgreen: "#0ACC1038"
+				taskgreen: "#0ACC1038",
 			},
 		},
 	},
