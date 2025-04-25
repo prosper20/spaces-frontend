@@ -5,10 +5,10 @@ import { Verified, BadgeX } from "lucide-react";
 interface Props {
 	children?: React.ReactNode;
 	header: string;
-	emails?: string;
+	emails?: string | undefined;
 }
 
-const OtpVerification: React.FC<Props> = ({ header, emails = "Jason" }) => {
+const OtpVerification: React.FC<Props> = ({ header, emails }) => {
 	const [otp, setOtp] = useState<string[]>(["", "", "", ""]);
 	const [error] = useState<string | null>(null);
 	const isSubmitting: boolean = false;
@@ -45,7 +45,7 @@ const OtpVerification: React.FC<Props> = ({ header, emails = "Jason" }) => {
 										otp={otp}
 									/>
 									<input type="hidden" name="otp" value={otp.join("")} />
-									<input type="hidden" name="email" value={"jason"} />
+									<input type="hidden" name="email" value={emails} />
 								</>
 							);
 						})}
