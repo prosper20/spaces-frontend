@@ -22,6 +22,7 @@ const ChatPage = lazy(() => import("./pages/dashboard/Chat"));
 const FilesPage = lazy(() => import("./pages/dashboard/Files"));
 const SettingsPage = lazy(() => import("./pages/dashboard/Settings"));
 const GroupInfo = lazy(() => import("./pages/GroupInfo.tsx"));
+const OngoingSession = lazy(() => import("./pages/OngoingSession.tsx"));
 
 const router = createBrowserRouter([
 	{
@@ -116,6 +117,10 @@ const router = createBrowserRouter([
 			{
 				path: "/",
 				element: <Navigate to="/dashboard" replace />,
+			},
+			{
+				path: "/dashboard/schedule/ongoing-session",
+				element: <OngoingSession />,
 			},
 		],
 	},

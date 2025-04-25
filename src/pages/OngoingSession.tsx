@@ -1,6 +1,6 @@
 // components/QAMentorSession.tsx
 import { MicOff, Hand, List, Phone } from "lucide-react";
-import face from "../../assets/user-images/avatar.png";
+import face from "../assets/user-images/avatar.png";
 
 type Participant = {
 	name: string;
@@ -77,7 +77,7 @@ const QAMentorSession: React.FC = () => {
 				))}
 			</div>
 
-			<div className="flex w-[0%] sm:w-[40%] mx-auto mt-[60px] justify-center gap-11 bg-background-card p-3 rounded-lg shadow-box-shadow1">
+			<div className="flex w-[100%] sm:w-[40%] mx-auto mt-[60px] justify-center gap-11 bg-background-card p-3 rounded-lg shadow-box-shadow1">
 				<button className="bg-red-500 text-white p-3 rounded-full hover:bg-red-600">
 					<MicOff />
 				</button>
