@@ -82,7 +82,7 @@ export default {
 				sidebar: { 100: "#B28B50", 200: "#BCA27C" },
 				card: { 100: "#FFFFFF" },
 				border: "#5C4033",
-				progress: "#665949"
+				progress: "#665949",
 			},
 		},
 	},
