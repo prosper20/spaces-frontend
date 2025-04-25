@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Lock, Sms } from "iconsax-react";
 import { toast } from "sonner";
 import { FormInput } from "../../components/UI/Input/Inputs";
-import { PostRequest } from "../../utils/url";
+import { BASE_URL, PostRequest, URL } from "../../utils/url";
 import useSignIn from "react-auth-kit/hooks/useSignIn";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
@@ -10,8 +10,6 @@ import { loginSchema, TLogin } from "../../types/auth/login";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AxiosError } from "axios";
 import LoaderSpinnerSmall from "../../components/Loaders/LoaderSpinnerSmall";
-
-const endpoint = import.meta.env.VITE_APP_DOMAIN;
 
 const LoginForm = () => {
 	const {
@@ -49,7 +47,7 @@ const LoginForm = () => {
 	});
 
 	const submitHandler = handleSubmit((data: TLogin) => {
-		mutate({ url: `${endpoint}/api/auth/login`, data });
+		mutate({ url: `${BASE_URL}${URL.login}`, data });
 	});
 
 	return (

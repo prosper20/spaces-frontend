@@ -19,6 +19,7 @@ const SchedulePage = lazy(() => import("./pages/dashboard/Schedule"));
 const ChatPage = lazy(() => import("./pages/dashboard/Chat"));
 const FilesPage = lazy(() => import("./pages/dashboard/Files"));
 const SettingsPage = lazy(() => import("./pages/dashboard/Settings"));
+const GroupInfo = lazy(() => import("./pages/GroupInfo.tsx"));
 
 const router = createBrowserRouter([
 	{
@@ -46,6 +47,15 @@ const router = createBrowserRouter([
 				element: (
 					<Suspense fallback={null}>
 						<GroupsPage />
+					</Suspense>
+				),
+			},
+
+			{
+				path: "/dashboard/groups/:groups",
+				element: (
+					<Suspense fallback={null}>
+						<GroupInfo></GroupInfo>
 					</Suspense>
 				),
 			},

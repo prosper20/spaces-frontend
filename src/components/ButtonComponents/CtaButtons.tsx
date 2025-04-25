@@ -29,3 +29,23 @@ export const CtaButton2: React.FC<CtaButton2Prop> = ({
 		</button>
 	);
 };
+
+interface CtaButton3 {
+	className?: string;
+	children: string;
+}
+
+export const CtaButton3: React.FC<CtaButton3> = ({
+	children,
+	className,
+	...props
+}) => {
+	return (
+		<button
+			className={`font-header1 text-border bg-background-card rounded-[8px] text-center ${className}`}
+			{...props}
+		>
+			{children}
+		</button>
+	);
+};

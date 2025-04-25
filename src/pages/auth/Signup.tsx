@@ -8,11 +8,9 @@ import { genSaltSync, hashSync } from "bcrypt-ts";
 
 import { FormInput, SelectInput } from "../../components/UI/Input/Inputs";
 import { signupSchema, TSignup } from "../../types/auth/signup";
-import { PostRequest } from "../../utils/url";
+import { BASE_URL, PostRequest } from "../../utils/url";
 import { useAppContext } from "../../context/AppContext";
 import Logo from "../../assets/Logo/logo.svg";
-
-const endpoint = import.meta.env.VITE_APP_DOMAIN;
 
 const Signup = () => {
 	const {
@@ -47,7 +45,7 @@ const Signup = () => {
 		const hash = hashSync(data.password, salt);
 
 		const postData = {
-			url: `${endpoint}/api/auth/signup`,
+			url: `${BASE_URL}/api/auth/signup`,
 			data: { ...data, password: hash, passwordConfirm: hash },
 		};
 

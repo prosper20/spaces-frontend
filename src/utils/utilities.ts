@@ -1,3 +1,5 @@
+import img1 from "../assets/images/Module Icon.svg";
+import groupedAvatar from "../assets/images/Grouped avatars.svg";
 export const daysOptions = Array.from({ length: 31 }, (_, i) => i + 1); // 1 to 31
 export const yearsOptions = Array.from({ length: 100 }, (_, i) => 2024 - i); // Last 100 years
 export const monthsOptions = [
@@ -80,3 +82,62 @@ export function shortenUrl(url: string, maxLength = 30) {
 
 	return domain + path + "...";
 }
+
+// interface Groups {
+//     title: string;
+//     img: string;
+//     alt: string;
+//     description: string;
+//     supervisor: string;
+//     courses: string[];
+//     roles: {
+//         name: string;
+//         roleplayer: string;
+//         desc: string;
+//     }[];
+//     clarityCall: string;
+//     pendingTasks: number;
+// }[]
+
+export const group1 = [
+	{
+		id: "1",
+		title: "Module: Machine Learning Fundamentals",
+		img: img1,
+		alt: "image of brain",
+		description:
+			"Collaborating to uncover patterns, train models, and build intelligent systems",
+		supervisor: "Dr Floyd Miles",
+		courses: ["AI", "Python", "Data Science", "ML", "Neutral Net", "Classify"],
+		roles: [
+			{
+				name: "grouplead",
+				roleplayer: "Wade warren",
+				desc: "Oversees the team, assigns tasks, and ensures project timelines are met",
+			},
+			{
+				name: "Tech starategist",
+				roleplayer: "Darlene Robotson",
+				desc: "Leads the technical direction—guides model-building, tools, and coding standards",
+			},
+			{
+				name: "Data Curator",
+				roleplayer: "Anette Black",
+				desc: "finds, cleans, and manages datasets for the team’s ML experiment",
+			},
+			{
+				name: "Note Keeper",
+				roleplayer: "Ralph Edwards",
+				desc: "Organizes and updates shared notes and meeting summaries.",
+			},
+			{
+				name: "Task Co-ord",
+				roleplayer: "Courtney Henry",
+				desc: "Tracks task progress and updates the workspace regularly.",
+			},
+		],
+		clarityCall: "Monday, April 14 at 1:00 PM",
+		pendingTasks: 3,
+		groupedAvatar,
+	},
+];

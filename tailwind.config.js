@@ -38,6 +38,7 @@ export default {
 				header: "700",
 				header1: "600",
 				header2: "400",
+				header3: "500",
 			},
 			colors: {
 				"background-primary": "#FDFAF7",
@@ -81,6 +82,7 @@ export default {
 				sidebar: { 100: "#B28B50", 200: "#BCA27C" },
 				card: { 100: "#FFFFFF" },
 				border: "#5C4033",
+				progress: "#665949"
 			},
 		},
 	},
