@@ -76,9 +76,7 @@ export const verifyOtpAction: ActionFunction = async ({ request }) => {
 	try {
 		const formData = await request.formData();
 		const otp = formData.get("otp") as string;
-		// const email = formData.get("email") as string;
-		const email = "daganajason72@gmail.com";
-		console.log("otp and email: ", otp, email);
+		const email = formData.get("email") as string;
 
 		const response = await axios.post(
 			import.meta.env.VITE_API_URL + "/auth/signup/verify",
