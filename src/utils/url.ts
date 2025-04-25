@@ -16,8 +16,6 @@ export const URL = {
 
 export const BASE_URL = import.meta.env.VITE_APP_DOMAIN;
 
-export const LOCAL_HOST = "http://localhost:3000";
-
 const axiosInstance = function instance(token?: string) {
 	return axios.create({
 		baseURL: BASE_URL,

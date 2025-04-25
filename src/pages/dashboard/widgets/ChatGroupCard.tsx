@@ -20,7 +20,6 @@ const ChatGroupCard: React.FC<Props> = ({ className }) => {
 						Sam just shared the training set
 					</p>
 					<CtaButton3 className="px-[10%] text-[18px] sm:text-[20px] text-wrap">
-						{" "}
 						View Message
 					</CtaButton3>
 				</div>
