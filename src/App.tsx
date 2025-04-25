@@ -10,6 +10,8 @@ import GlobalLayout from "./components/layout/GlobalLayout";
 import Signup from "./pages/auth/Signup";
 import Welcome from "./pages/auth/Welcome.tsx";
 import Verification from "./pages/auth/Verification.tsx";
+import { verifyOtpAction } from "./utils/url.ts";
+import EmailSuccess from "./pages/EmailSuccess.tsx";
 
 /* dashboard pages */
 const DashboardHome = lazy(() => import("./pages/dashboard/Dashboard"));
@@ -19,6 +21,7 @@ const SchedulePage = lazy(() => import("./pages/dashboard/Schedule"));
 const ChatPage = lazy(() => import("./pages/dashboard/Chat"));
 const FilesPage = lazy(() => import("./pages/dashboard/Files"));
 const SettingsPage = lazy(() => import("./pages/dashboard/Settings"));
+const GroupInfo = lazy(() => import("./pages/GroupInfo.tsx"));
 
 const router = createBrowserRouter([
 	{
@@ -46,6 +49,15 @@ const router = createBrowserRouter([
 				element: (
 					<Suspense fallback={null}>
 						<GroupsPage />
+					</Suspense>
+				),
+			},
+
+			{
+				path: "/dashboard/groups/:groups",
+				element: (
+					<Suspense fallback={null}>
+						<GroupInfo></GroupInfo>
 					</Suspense>
 				),
 			},
@@ -128,6 +140,11 @@ const router = createBrowserRouter([
 	{
 		path: "/verify",
 		element: <Verification />,
+		action: verifyOtpAction,
+	},
+	{
+		path: "/otpSuccess",
+		element: <EmailSuccess />,
 	},
 ]);
 

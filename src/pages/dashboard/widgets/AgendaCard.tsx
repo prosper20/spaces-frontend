@@ -53,7 +53,7 @@ const AgendaCard: React.FC<Props> = ({ className, items = sample }) => (
 			{items.map((item) => (
 				<Shadow2
 					key={item.id}
-					className="bg-background-primary !shadow-agenda-shadow flex w-full h-[72px] !rounded-[15px] px-[11px] py-[10px] gap-[19px]"
+					className="bg-background-primary !shadow-agenda-shadow flex w-full  !rounded-[15px] px-[11px] py-[10px] gap-[19px]"
 				>
 					<div>
 						<CtaButton2 className={tagColor[item.tag]}> {item.tag}</CtaButton2>

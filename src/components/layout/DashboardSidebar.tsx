@@ -76,7 +76,7 @@ const DashboardSidebar: React.FC<Props> = ({ className = "", onLinkClick }) => {
 						<NavLink
 							key={to}
 							to={to}
-							end
+							end={to === "/dashboard"}
 							className={({ isActive }) =>
 								[
 									baseLinkClasses,

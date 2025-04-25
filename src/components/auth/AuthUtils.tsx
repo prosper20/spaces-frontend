@@ -93,9 +93,27 @@ interface EmailContentProp {
 export function EmailContent({ children }: EmailContentProp) {
 	return (
 		<div className="flex flex-col justify-center items-center h-[100vh]">
-			<div className="p-16 text-center leading-loose w-[570px] relative box rounded-[20px]">
+			<div className="p-16 bg-gray-100 text-center py-[100px] leading-loose w-[570px] relative box rounded-[20px]">
 				{children}
 			</div>
 		</div>
+	);
+}
+
+interface buttonProps {
+	content: string;
+	prop: string;
+	link: string;
+}
+
+export function LandingButton({ content, prop, link }: buttonProps) {
+	return (
+		<Link
+			to={link}
+			className={`text-[15px] !text-border !bg-background-card px-2 py-1 rounded ${prop}`}
+		>
+			{" "}
+			{content}
+		</Link>
 	);
 }

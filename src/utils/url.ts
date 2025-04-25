@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const URL = {
 	// Auth
-	login: "/auth/login",
+	login: "/api/auth/login",
 	register: "auth/register",
 	continueWithGoogle: "/auth/continue-with-google",
 	completeRegistration: "/auth/complete-register",
@@ -14,7 +14,7 @@ export const URL = {
 	peopleToFollow: "/users/people-to-follow",
 };
 
-export const BASE_URL = import.meta.env.VITE_APP_DOMAIN;
+export const BASE_URL = import.meta.env.VITE_API_URL;
 
 const axiosInstance = function instance(token?: string) {
 	return axios.create({
@@ -69,3 +69,33 @@ export async function PutRequest({
 }) {
 	return await axiosInstance(token).put(url, data);
 }
+
+import { redirect, type ActionFunction } from "react-router-dom";
+
+export const verifyOtpAction: ActionFunction = async ({ request }) => {
+	try {
+		const formData = await request.formData();
+		const otp = formData.get("otp") as string;
+		// const email = formData.get("email") as string;
+		const email = "daganajason72@gmail.com";
+		console.log("otp and email: ", otp, email);
+
+		const response = await axios.post(
+			import.meta.env.VITE_API_URL + "/auth/signup/verify",
+			{ otp, email }
+		);
+		console.log(response.data);
+		return redirect("/otpSuccess");
+	} catch (err: any) {
+		console.log(err);
+		return new Response(
+			JSON.stringify({
+				error: err.response?.data?.message || "Verification failed",
+			}),
+			{
+				status: 400,
+				headers: { "Content-Type": "application/json" },
+			}
+		);
+	}
+};
