@@ -2,18 +2,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { Lock, Sms } from "iconsax-react";
 import { toast } from "sonner";
 import { FormInput } from "../../components/UI/Input/Inputs";
-import { PostRequest } from "../../utils/url";
-import useSignIn from "react-auth-kit/hooks/useSignIn";
+import LoaderSpinnerSmall from "../../components/Loaders/LoaderSpinnerSmall";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { loginSchema, TLogin } from "../../types/auth/login";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AxiosError } from "axios";
-import LoaderSpinnerSmall from "../../components/Loaders/LoaderSpinnerSmall";
-
-const endpoint = import.meta.env.VITE_APP_DOMAIN;
+import axios from "axios";
 
 const LoginForm = () => {
+	const navigate = useNavigate();
+
 	const {
 		register,
 		handleSubmit,
@@ -21,35 +19,47 @@ const LoginForm = () => {
 		reset,
 	} = useForm<TLogin>({ resolver: zodResolver(loginSchema) });
 
-	const signIn = useSignIn();
-	const navigate = useNavigate();
+	const loginMutation = useMutation({
+		mutationFn: async (formData: TLogin) => {
+			try {
+				const response = await axios.post(
+					import.meta.env.VITE_API_URL + "/auth/login",
+					formData,
+					{ withCredentials: true }
+				);
 
-	const { mutate, isPending } = useMutation({
-		mutationFn: PostRequest,
-		onSuccess: (res) => {
-			if (res.data.accessToken) {
-				signIn({
-					auth: {
-						type: "Bearer",
-						token: res.data.accessToken,
-					},
-					userState: {
-						username: res.data.fullName,
-					},
-				});
-				toast.success("Login Successful");
-				reset();
-				navigate("/");
+				// const { accessToken, refreshToken } = response.data;
+				// localStorage.setItem("access-token", accessToken);
+				// localStorage.setItem("refresh-token", refreshToken);
+
+				// const userProfile = await axios.get(
+				// 	import.meta.env.VITE_API_URL + "/api/users/me",
+				// 	{
+				// 		headers: {
+				// 			Authorization: `Bearer ${accessToken}`,
+				// 		},
+				// 		withCredentials: true,
+				// 	}
+				// );
+
+				// localStorage.setItem("user", JSON.stringify(userProfile.data));
+				return response.data;
+			} catch (err: any) {
+				throw new Error(err.response?.data?.message || "Login failed");
 			}
 		},
-		onError: (error: AxiosError<{ message: string }>) => {
-			console.log(error);
-			toast.error(error?.response?.data?.message ?? "Login failed");
+		onSuccess: () => {
+			toast.success("Login Successful");
+			reset();
+			navigate("/");
+		},
+		onError: (err: Error) => {
+			toast.error(err.message);
 		},
 	});
 
-	const submitHandler = handleSubmit((data: TLogin) => {
-		mutate({ url: `${endpoint}/api/auth/login`, data });
+	const submitHandler = handleSubmit((data) => {
+		loginMutation.mutate(data);
 	});
 
 	return (
@@ -103,10 +113,10 @@ const LoginForm = () => {
 
 					<button
 						type="submit"
-						disabled={isPending}
+						disabled={loginMutation.isPending}
 						className="bg-[#B28B50] text-white font-semibold text-lg py-4 rounded-[12px] shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
 					>
-						{isPending ? <LoaderSpinnerSmall /> : "Login"}
+						{loginMutation.isPending ? <LoaderSpinnerSmall /> : "Login"}
 					</button>
 				</form>
 
