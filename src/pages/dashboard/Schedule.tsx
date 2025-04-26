@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Bell, Calendar, Clock, ClockFadingIcon } from "lucide-react";
 import CalendarWidget from "./widgets/CalendarWidget";
+import { Link } from "react-router-dom";
 
 const CalendarScheduler = () => {
 	//   const [selectedDate, setSelectedDate] = useState<number>(23);
@@ -196,7 +197,7 @@ const CalendarScheduler = () => {
 						</div>
 
 						<button className="bg-primary-button-100 h-[40px] text-white px-7 text-[18px] rounded-[15px]">
-							Join a session
+							<Link to={"ongoing-session"}>Join a session</Link>
 						</button>
 					</div>
 				</div>
