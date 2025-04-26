@@ -120,7 +120,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/dashboard/schedule/ongoing-session",
-				element: <OngoingSession />,
+				element: (
+					<Suspense fallback={null}>
+						<OngoingSession />
+					</Suspense>
+				),
 			},
 		],
 	},
