@@ -52,7 +52,11 @@ const DashboardHome: React.FC = () => {
         "
 				>
 					{/* Row 2 */}
-					<ActiveGroupsCard className="flex-1 max-mw:mb-11" />
+					<ActiveGroupsCard
+						className="flex-1 max-mw:mb-11"
+						header={"Active Groups"}
+						button
+					/>
 					<div className="flex-1">
 						<UpcomingSessionsCard className="" />
 						<ContributionsCard className="mt-[20px] max-mw:mb-8" />

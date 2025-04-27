@@ -13,6 +13,8 @@ export interface Group {
 interface Props {
 	groups?: Group[];
 	className?: string;
+	header: string;
+	button?: boolean;
 }
 
 const mockGroups: Group[] = [
@@ -22,20 +24,20 @@ const mockGroups: Group[] = [
 	{ id: "4", name: "Project Pioneers", members: 4 },
 ];
 
-const users = "Vector.svg";
+const users = "/Vector.svg";
 
 const ActiveGroupsCard: React.FC<Props> = ({
 	className,
+	header,
+	button,
 	groups = mockGroups,
 }) => (
-	<Card1
-		header={"Active Groups"}
-		className={`pb-[30px] lg:row-span-2 ${className}`}
-		isStroked
-	>
-		<button className="text-[14px] text-right px-[25px] mt-[24px] font-header1 underline underline-offset-[24.5%] text-lightpink hover:underline">
-			View all
-		</button>
+	<Card1 header={`${header}`} className={`pb-[30px]  ${className}`} isStroked>
+		{button && (
+			<button className="text-[14px] text-right px-[25px] mt-[24px] font-header1 underline underline-offset-[24.5%] text-lightpink hover:underline">
+				View all
+			</button>
+		)}
 		<ul className="px-8 flex flex-col gap-[22px] mt-[17px]">
 			{groups.map((g) => (
 				<Shadow1

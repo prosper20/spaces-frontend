@@ -17,6 +17,7 @@ export default {
 			"max-mw": { max: "1023px" },
 			"max-md": { max: "1290px" },
 			"max-sw": { max: "500px" },
+			"max-pd": { max: "830px" },
 			"max-bw": { max: "360px" },
 		},
 		boxShadow: {
@@ -31,6 +32,7 @@ export default {
 			"search-bar": "4px 4px 10px 5px #D8C4AA",
 			"right-sidebar": "-4px 4px 10px 0px #D8C4AA",
 			"add-task": "0px 4px 15px 0px #5C403366",
+			"profile-info": "0px 0px 10px 1px #00000040",
 		},
 		extend: {
 			fontFamily: {
