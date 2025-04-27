@@ -62,11 +62,7 @@ const ActiveGroupsCard: React.FC<Props> = ({ className, header }) => {
 	}, [authHeader]);
 
 	return (
-		<Card1
-			header={`${header}`}
-			className={`pb-[30px] lg:row-span-2 ${className}`}
-			isStroked
-		>
+		<Card1 header={`${header}`} className={`pb-[30px] ${className}`} isStroked>
 			<a
 				href="/dashboard/groups"
 				className="text-[14px] text-right px-[25px] mt-[24px] font-header1 underline underline-offset-[24.5%] text-lightpink hover:underline"
