@@ -1,21 +1,54 @@
 import { Circle } from "lucide-react";
 import React from "react";
+import { useEffect, useState } from "react";
+import useAuthHeader from "react-auth-kit/hooks/useAuthHeader";
+import { toast } from "sonner";
+
 import Card1 from "../../../components/UI/Input/Card1";
 import DonutChart from "../../../components/UI/Input/DonutChart";
 
 interface Props {
-	completed?: number;
-	inProgress?: number;
-	notStarted?: number;
 	className?: string;
 }
 
-const TasksProgressCard: React.FC<Props> = ({
-	completed = 60,
-	inProgress = 20,
-	notStarted = 20,
-	className,
-}) => {
+const TasksProgressCard: React.FC<Props> = ({ className }) => {
+	const [completed, setCompleted] = useState(0);
+	const [inProgress, setInProgress] = useState(0);
+	const [notStarted, setNotStarted] = useState(0);
+	const authHeader = useAuthHeader();
+
+	useEffect(() => {
+		const fetchStatusGraph = async () => {
+			try {
+				const token = authHeader?.split(" ")[1];
+				if (!token) return;
+
+				const response = await fetch(
+					`${import.meta.env.VITE_API_URL}/tasks/status-graph`,
+					{
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					}
+				);
+
+				if (!response.ok) {
+					throw new Error("Failed to fetch task graph");
+				}
+
+				const data = await response.json();
+				setCompleted(data.completed || 0);
+				setInProgress(data.inProgress || 0);
+				setNotStarted(data.todo || 0);
+			} catch (error) {
+				console.error(error);
+				toast.error("Failed to load task graph");
+			}
+		};
+
+		fetchStatusGraph();
+	}, [authHeader]);
+
 	return (
 		<Card1 header={"Task"} className={`pb-[30px] gap-4 ${className}`} isStroked>
 			{/* Donut Chart */}
