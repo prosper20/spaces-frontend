@@ -12,11 +12,15 @@ import { Card2 } from "../../../components/UI/Input/Card1";
 
 interface CalendarWidgetProps {
 	className?: string;
+	style?: string;
 }
 
 const weekdays = ["S", "M", "T", "W", "T", "F", "S"];
 
-const CalendarWidget: React.FC<CalendarWidgetProps> = ({ className }) => {
+const CalendarWidget: React.FC<CalendarWidgetProps> = ({
+	className,
+	style,
+}) => {
 	const [month, setMonth] = useState<Date>(new Date());
 
 	const days = eachDayOfInterval({
@@ -58,7 +62,10 @@ const CalendarWidget: React.FC<CalendarWidgetProps> = ({ className }) => {
 			{/* Weekdays */}
 			<div className="grid grid-cols-7 text-center text-[0.8vw] max-mm:text-[1.2vw] max-mw:text-[1vw] font-header1 text-text-100 mt-[0.1vw] max-mw:mt-[1vw] max-mw:py-[2vw]">
 				{weekdays.map((d) => (
-					<span className="p-4 max-mm:p-[1vw] max-mw:text-[16px]" key={d}>
+					<span
+						className={`p-4 max-mm:p-[1vw] max-mw:text-[16px] ${className}`}
+						key={d}
+					>
 						{d}
 					</span>
 				))}
@@ -76,7 +83,9 @@ const CalendarWidget: React.FC<CalendarWidgetProps> = ({ className }) => {
 						<button
 							key={day.toString()}
 							className={`
-                aspect-square rounded-md shadow-calendar-date w-[2.2vw] max-mm:w-[3.2vw] max-mw:w-[6.9vw] text-[0.8vw] font-header1 text-text-100 h-[2.4vw] max-mw:h-[6.9vw] max-mw:text-[16px] max-mm:text-[14px] justify-self-center
+								
+								${style}
+                aspect-square rounded-md shadow-calendar-date w-[2.2vw] max-mm:w-[3.2vw] max-mw:w-[6.9vw] text-[0.8vw] font-header1 text-text-100 h-[2.4vw] max-mw:h-[6.9vw] max-mw:text-[16px] max-mm:text-[14px] justify-self-center 
                 ${isToday ? "bg-active-calendar text-white" : "hover:bg-black/10"}
               `}
 						>
