@@ -13,15 +13,16 @@ const CreateJoinCard: React.FC<Props> = ({ className }) => (
 		isStroked
 	>
 		<div className="flex justify-end items-end mt-[60px] pr-[31px]">
-			<button
+			<a
 				aria-label="create or join"
+				href="/dashboard/groups/create"
 				className="
         w-[82px] h-[82px] self-center rounded-full shadow-joincircle bg-lightpink
         text-text-100 hover:bg-[#d89c94] flex justify-center items-center ease-in-out duration-700 transition
       "
 			>
 				<img src={plus} alt="image of plus" className="mt-6 w-[40px]" />
-			</button>
+			</a>
 		</div>
 	</Card1>
 );
