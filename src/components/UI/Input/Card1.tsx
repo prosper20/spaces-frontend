@@ -4,6 +4,7 @@ interface CardProps {
 	header?: string;
 	headButton?: boolean;
 	buttonText?: string;
+	headLink?: string;
 	children: React.ReactNode;
 	style?: React.CSSProperties;
 }
@@ -14,6 +15,7 @@ const Card1: React.FC<CardProps> = ({
 	header,
 	headButton,
 	buttonText,
+	headLink,
 	children,
 	...style
 }) => {
@@ -28,9 +30,12 @@ const Card1: React.FC<CardProps> = ({
 					{header}
 				</h3>
 				{headButton && (
-					<button className="text-[12px] text-right font-header1 underline underline-offset-[24.5%] text-lightpink hover:underline">
+					<a
+						href={headLink}
+						className="text-[12px] text-right font-header1 underline underline-offset-[24.5%] text-lightpink hover:underline"
+					>
 						{buttonText}
-					</button>
+					</a>
 				)}
 			</header>
 

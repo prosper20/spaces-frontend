@@ -4,7 +4,7 @@ import { toast } from "sonner";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { genSaltSync, hashSync } from "bcrypt-ts";
+// import { genSaltSync, hashSync } from "bcrypt-ts";
 
 import { FormInput, SelectInput } from "../../components/UI/Input/Inputs";
 import { signupSchema, TSignup } from "../../types/auth/signup";
@@ -41,12 +41,16 @@ const Signup = () => {
 
 	const submitHandler = handleSubmit((data: TSignup) => {
 		setRegisterInfo(data);
-		const salt = genSaltSync(10);
-		const hash = hashSync(data.password, salt);
+		// const salt = genSaltSync(10);
+		// const hash = hashSync(data.password, salt);
 
 		const postData = {
 			url: `${BASE_URL}/auth/signup`,
-			data: { ...data, password: hash, passwordConfirm: hash },
+			data: {
+				...data,
+				password: data.password,
+				passwordConfirm: data.passwordConfirm,
+			},
 		};
 
 		mutate(postData);
