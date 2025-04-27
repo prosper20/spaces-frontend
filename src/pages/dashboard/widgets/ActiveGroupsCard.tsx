@@ -6,7 +6,7 @@ import useAuthHeader from "react-auth-kit/hooks/useAuthHeader";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 
-const users = "Vector.svg";
+const users = "/Vector.svg";
 
 export interface Group {
 	id: string;
