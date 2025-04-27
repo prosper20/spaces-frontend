@@ -55,36 +55,65 @@ const CreateGroupPage: React.FC = () => {
 		}
 	};
 
-	const groups = [
+	const [groups, setGroups] = useState<
 		{
-			id: "1",
-			initials: "TN",
-			name: "Team Nova",
-			desc: "Innovating across digital product idea",
-		},
-		{
-			id: "2",
-			initials: "DS",
-			name: "Data Squad",
-			desc: "Analyzing data, trends, and tools",
-		},
-		{
-			id: "3",
-			initials: "DL",
-			name: "Design Lab",
-			desc: "Creative UI/UX projects and reviews",
-		},
-		{
-			id: "4",
-			initials: "CC",
-			name: "Code Catalysts",
-			desc: "Frontend builds with React focus",
-		},
-	];
+			id: string;
+			groupName: string;
+			description: string;
+			purpose: string;
+			module: string | null;
+			tags: string[];
+			created_at: string;
+			updated_at: string;
+			members: {
+				id: string;
+				groupId: string;
+				userId: string;
+				user: {
+					id: string;
+					fullName: string;
+					email: string;
+					role: string;
+					profile_picture: string;
+				};
+			}[];
+		}[]
+	>([]);
 
 	const filteredGroups = groups.filter((group) =>
-		group.name.toLowerCase().includes(searchTerm.toLowerCase())
+		group.groupName.toLowerCase().includes(searchTerm.toLowerCase())
 	);
+
+	useEffect(() => {
+		const fetchGroups = async () => {
+			try {
+				const token = authHeader?.split(" ")[1];
+				if (!token) {
+					toast.error("No auth token found");
+					return;
+				}
+
+				const response = await fetch(`${import.meta.env.VITE_API_URL}/groups`, {
+					method: "GET",
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+				});
+
+				if (!response.ok) {
+					throw new Error("Failed to fetch groups");
+				}
+
+				const data = await response.json();
+				setGroups(data); // directly save the array of groups
+			} catch (error) {
+				console.error(error);
+				toast.error("Failed to load groups");
+			}
+		};
+
+		fetchGroups();
+	}, [authHeader]);
 
 	const [supervisors, setSupervisors] = useState<
 		{
@@ -277,27 +306,29 @@ const CreateGroupPage: React.FC = () => {
 								}`}
 							>
 								<div className="flex items-center gap-4">
-									{/* <div className="w-12 h-12 flex items-center justify-center rounded-[8px] bg-primary-200 text-white font-bold text-lg">
-										{group.initials}
-									</div> */}
 									<div
 										className="w-12 h-12 flex items-center justify-center rounded-[8px] text-white font-bold text-lg"
 										style={{
-											backgroundColor: getColorFromInitials(group.initials),
+											backgroundColor: getColorFromInitials(
+												group.groupName.substring(0, 2)
+											),
+											aspectRatio: "1 / 1",
 										}}
 									>
-										{group.initials}
+										{group.groupName.substring(0, 2)}
 									</div>
 									<div>
 										<h3 className="font-semibold text-[18px] text-text-100">
-											{group.name}
+											{group.groupName}
 										</h3>
-										<p className="text-sm text-text-100/[68%]">{group.desc}</p>
+										<p className="text-sm text-text-100/[68%]">
+											{group.description}
+										</p>
 									</div>
 								</div>
 								<button
 									className="text-text-100 text-2xl hover:text-primary-500"
-									onClick={(e) => e.stopPropagation()} // prevent triggering group navigation when clicking '...'
+									onClick={(e) => e.stopPropagation()}
 								>
 									...
 								</button>

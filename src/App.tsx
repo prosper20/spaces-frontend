@@ -19,13 +19,11 @@ import GroupsListPage from "./pages/dashboard/layout/GroupsListPage.tsx";
 
 /* dashboard pages */
 const DashboardHome = lazy(() => import("./pages/dashboard/Dashboard"));
-// const GroupsPage = lazy(() => import("./pages/dashboard/Groups"));
 const TasksPage = lazy(() => import("./pages/dashboard/Tasks"));
 const SchedulePage = lazy(() => import("./pages/dashboard/Schedule"));
 const ChatPage = lazy(() => import("./pages/dashboard/Chat"));
 const FilesPage = lazy(() => import("./pages/dashboard/Files"));
 const SettingsPage = lazy(() => import("./pages/dashboard/Settings"));
-const GroupInfo = lazy(() => import("./pages/GroupInfo.tsx"));
 const OngoingSession = lazy(() => import("./pages/OngoingSession.tsx"));
 
 const router = createBrowserRouter([
@@ -90,15 +88,6 @@ const router = createBrowserRouter([
 						],
 					},
 				],
-			},
-
-			{
-				path: "/dashboard/groups/:groups",
-				element: (
-					<Suspense fallback={null}>
-						<GroupInfo></GroupInfo>
-					</Suspense>
-				),
 			},
 
 			// • /dashboard/tasks
