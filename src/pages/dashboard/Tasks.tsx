@@ -1,6 +1,8 @@
 // components/TaskBoard.tsx
 
-import React from "react";
+import React, { useState } from "react";
+import ModalLayout from "../../components/modals/ModalLayout";
+import Tasks from "../../components/UI/Tasks";
 
 type Task = {
 	title: string;
@@ -15,7 +17,7 @@ type Column = {
 	tasks: Task[];
 };
 
-const columns: Column[] = [
+export const columns: Column[] = [
 	{
 		title: "To do",
 		tasks: [
@@ -83,6 +85,14 @@ const columns: Column[] = [
 ];
 
 const TaskBoard: React.FC = () => {
+	const [isOpen, setIsOpen] = useState<boolean>(false);
+	function handleOpen() {
+		setIsOpen(true);
+	}
+
+	function handleClose() {
+		setIsOpen(false);
+	}
 	return (
 		<div className="p-8 min-h-screen">
 			<h1 className="text-[36px] font-header mb-8 text-text-100">Task Board</h1>
@@ -132,12 +142,18 @@ const TaskBoard: React.FC = () => {
 								</div>
 							))}
 
-							<button className="w-full mt-2 py-8 rounded-lg bg-gray-200 font-header3 hover:bg-gray-300 text-[20px]">
+							<button
+								onClick={handleOpen}
+								className="w-full mt-2 py-8 rounded-lg bg-gray-200 font-header3 hover:bg-gray-300 text-[20px]"
+							>
 								+ Add task
 							</button>
 						</div>
 					</div>
 				))}
+				<ModalLayout isOpen={isOpen} onClose={handleClose}>
+					<Tasks />
+				</ModalLayout>
 			</div>
 		</div>
 	);
