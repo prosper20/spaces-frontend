@@ -20,7 +20,7 @@ interface Props {
 	button?: boolean;
 }
 
-const ActiveGroupsCard: React.FC<Props> = ({ className }) => {
+const ActiveGroupsCard: React.FC<Props> = ({ className, header }) => {
 	const authHeader = useAuthHeader();
 	const [groups, setGroups] = useState<Group[]>([]);
 
@@ -63,7 +63,7 @@ const ActiveGroupsCard: React.FC<Props> = ({ className }) => {
 
 	return (
 		<Card1
-			header={"Active Groups"}
+			header={`${header}`}
 			className={`pb-[30px] lg:row-span-2 ${className}`}
 			isStroked
 		>
