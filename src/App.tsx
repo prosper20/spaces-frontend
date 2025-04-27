@@ -12,10 +12,14 @@ import Welcome from "./pages/auth/Welcome.tsx";
 import Verification from "./pages/auth/Verification.tsx";
 import { verifyOtpAction } from "./utils/url.ts";
 import EmailSuccess from "./pages/EmailSuccess.tsx";
+import CreateGroupPage from "./pages/dashboard/layout/CreateGroupPage.tsx";
+import GroupDashboardPage from "./pages/dashboard/layout/GroupDashboardPage.tsx";
+import GroupInfoPage from "./pages/dashboard/layout/GroupInfoPage.tsx";
+import GroupsListPage from "./pages/dashboard/layout/GroupsListPage.tsx";
 
 /* dashboard pages */
 const DashboardHome = lazy(() => import("./pages/dashboard/Dashboard"));
-const GroupsPage = lazy(() => import("./pages/dashboard/Groups"));
+// const GroupsPage = lazy(() => import("./pages/dashboard/Groups"));
 const TasksPage = lazy(() => import("./pages/dashboard/Tasks"));
 const SchedulePage = lazy(() => import("./pages/dashboard/Schedule"));
 const ChatPage = lazy(() => import("./pages/dashboard/Chat"));
@@ -47,11 +51,45 @@ const router = createBrowserRouter([
 			// • /dashboard/groups
 			{
 				path: "/dashboard/groups",
-				element: (
-					<Suspense fallback={null}>
-						<GroupsPage />
-					</Suspense>
-				),
+				children: [
+					{
+						index: true,
+						element: (
+							<Suspense fallback={null}>
+								<GroupsListPage />{" "}
+							</Suspense>
+						),
+					},
+					{
+						path: "create",
+						element: (
+							<Suspense fallback={null}>
+								<CreateGroupPage />
+							</Suspense>
+						),
+					},
+					{
+						path: ":groupId",
+						children: [
+							{
+								index: true,
+								element: (
+									<Suspense fallback={null}>
+										<GroupDashboardPage />{" "}
+									</Suspense>
+								),
+							},
+							{
+								path: "info",
+								element: (
+									<Suspense fallback={null}>
+										<GroupInfoPage />{" "}
+									</Suspense>
+								),
+							},
+						],
+					},
+				],
 			},
 
 			{

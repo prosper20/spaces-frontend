@@ -1,4 +1,5 @@
 import React from "react";
+import useAuthUser from "react-auth-kit/hooks/useAuthUser";
 
 /* ← import the widgets you already coded */
 import CreateJoinCard from "./widgets/CreateJoinCard";
@@ -11,7 +12,12 @@ import ContributionsCard from "./widgets/ContributionsCard";
 import DashboardDetailsBar from "../../components/layout/DashboardDetailsBar";
 
 const DashboardHome: React.FC = () => {
-	/** You can fetch data for the cards with React‑Query hooks here */
+	const authUser: {
+		id: string;
+		fullName: string;
+		email: string;
+		profilePicture: string;
+	} | null = useAuthUser();
 
 	return (
 		<section className="flex justify-between gap-[15px] max-mm:grid max-mm:grid-cols-1 ">
@@ -22,7 +28,7 @@ const DashboardHome: React.FC = () => {
 						Welcome Back,
 					</h1>
 					<p className="font-header1 text-[24px] text-text-100/[71%] mb-[58px]">
-						Darlene Robertson
+						{authUser?.fullName}
 					</p>
 				</header>
 

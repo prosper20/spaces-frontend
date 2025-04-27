@@ -8,9 +8,11 @@ import { useForm } from "react-hook-form";
 import { loginSchema, TLogin } from "../../types/auth/login";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
+import useSignIn from "react-auth-kit/hooks/useSignIn";
 
 const LoginForm = () => {
 	const navigate = useNavigate();
+	const signIn = useSignIn();
 
 	const {
 		register,
@@ -48,10 +50,24 @@ const LoginForm = () => {
 				throw new Error(err.response?.data?.message || "Login failed");
 			}
 		},
-		onSuccess: () => {
-			toast.success("Login Successful");
-			reset();
-			navigate("/");
+		onSuccess: (response) => {
+			if (response.accessToken) {
+				signIn({
+					auth: {
+						type: "Bearer",
+						token: response.accessToken,
+					},
+					userState: {
+						id: response.id,
+						fullName: response.fullName,
+						email: response.email,
+						profilePicture: response.profile_picture,
+					},
+				});
+				toast.success("Login Successful");
+				reset();
+				navigate("/");
+			}
 		},
 		onError: (err: Error) => {
 			toast.error(err.message);

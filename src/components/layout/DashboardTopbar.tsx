@@ -1,7 +1,9 @@
 // src/components/layout/DashboardTopbar.tsx
 import React, { useState } from "react";
 import { Menu, Search, Bell } from "lucide-react";
-import userAvatar from "../../assets/user-images/avatar.png";
+import useAuthUser from "react-auth-kit/hooks/useAuthUser";
+
+import userAvatar from "../../assets/user-images/default-avatar-photo.jpg";
 import { Shadow2 } from "../UI/Input/Shadows";
 
 /* Props ------------------------------------------------------------------ */
@@ -13,6 +15,13 @@ interface DashboardTopbarProps {
 const DashboardTopbar: React.FC<DashboardTopbarProps> = ({
 	onHamburgerClick,
 }) => {
+	const authUser: {
+		id: string;
+		fullName: string;
+		email: string;
+		profilePicture: string;
+	} | null = useAuthUser();
+
 	const [searchTerm, setSearchTerm] = useState<string>("");
 
 	function handleClearSearch() {
@@ -99,7 +108,11 @@ const DashboardTopbar: React.FC<DashboardTopbarProps> = ({
 
 					{/* user avatar */}
 					<img
-						src={userAvatar}
+						src={
+							authUser?.profilePicture.trim() !== ""
+								? authUser?.profilePicture
+								: userAvatar
+						}
 						alt="User avatar"
 						className="w-[82px] h-[82px] max-sw:w-[50px] max-sw:h-[50px] rounded-full object-cover border border-black/10"
 					/>
