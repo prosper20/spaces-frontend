@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const NotificationSetting: React.FC = () => {
 	// State for notification preferences
 	// const [notifications, setNotifications] = useState({
@@ -5,6 +7,30 @@ const NotificationSetting: React.FC = () => {
 	// 	sessionReminders: true,
 	// 	taskDeadlineAlerts: true
 	// });
+
+	type NotificationType = "notification" | "session" | "task";
+
+	const [notification, setNotification] = useState<{
+		notification: boolean;
+		session: boolean;
+		task: boolean;
+	}>({
+		notification: false,
+		session: false,
+		task: false,
+	});
+
+	const toggleSwitch = (type: NotificationType) => {
+		setNotification((prev) => {
+			const tracked = {
+				...prev,
+				[type]: !prev[type],
+			};
+			console.log(tracked);
+			return tracked;
+		});
+	};
+
 	return (
 		<section>
 			<h2 className="text-[24px] sm:text-[32px] font-header mb-2 text-gray-800">
@@ -22,8 +48,17 @@ const NotificationSetting: React.FC = () => {
 						<span className="text-[20px] font-[300] text-text-100">
 							Push notification
 						</span>
-						<div className="w-12 h-6 bg-blue-500 rounded-full flex items-center px-0.5">
-							<div className="w-5 h-5 bg-white rounded-full ml-auto"></div>
+						<div
+							onClick={() => toggleSwitch("notification")}
+							className={`w-16 h-8 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${
+								!notification.notification ? "bg-gray-300" : "bg-blue-500"
+							}`}
+						>
+							<div
+								className={`bg-white w-6 h-6 rounded-full shadow-md transform transition-transform duration-300 ${
+									!notification.notification ? "translate-x-0" : "translate-x-8"
+								}`}
+							/>
 						</div>
 					</div>
 
@@ -32,8 +67,17 @@ const NotificationSetting: React.FC = () => {
 							<span className="text-[20px] font-[300] text-text-100">
 								Session Reminders
 							</span>
-							<div className="w-12 h-6 bg-blue-500 rounded-full flex items-center px-0.5">
-								<div className="w-5 h-5 bg-white rounded-full ml-auto"></div>
+							<div
+								onClick={() => toggleSwitch("session")}
+								className={`w-16 h-8 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${
+									!notification.session ? "bg-gray-300" : "bg-blue-500"
+								}`}
+							>
+								<div
+									className={`bg-white w-6 h-6 rounded-full shadow-md transform transition-transform duration-300 ${
+										!notification.session ? "translate-x-0" : "translate-x-8"
+									}`}
+								/>
 							</div>
 						</div>
 					</div>
@@ -43,8 +87,17 @@ const NotificationSetting: React.FC = () => {
 							<span className="text-[20px] font-[300] text-text-100">
 								Task Deadline alerts
 							</span>
-							<div className="w-12 h-6 bg-blue-500 rounded-full flex items-center px-0.5">
-								<div className="w-5 h-5 bg-white rounded-full ml-auto"></div>
+							<div
+								onClick={() => toggleSwitch("task")}
+								className={`w-16 h-8 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ${
+									!notification.task ? "bg-gray-300" : "bg-blue-500"
+								}`}
+							>
+								<div
+									className={`bg-white w-6 h-6 rounded-full shadow-md transform transition-transform duration-300 ${
+										!notification.task ? "translate-x-0" : "translate-x-8"
+									}`}
+								/>
 							</div>
 						</div>
 					</div>
