@@ -43,7 +43,7 @@ const DonutChart: React.FC<DonutChartProps> = ({
 							stroke={segment.color}
 							strokeWidth={strokeWidth}
 							strokeDasharray={`${dashLength} ${circumference}`}
-							strokeDashoffset={offset}
+							strokeDashoffset={offset || 0}
 							strokeLinecap="butt"
 							transform={`rotate(-90 ${center} ${center})`}
 						/>

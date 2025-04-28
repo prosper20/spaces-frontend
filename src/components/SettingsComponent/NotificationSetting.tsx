@@ -26,7 +26,6 @@ const NotificationSetting: React.FC = () => {
 				...prev,
 				[type]: !prev[type],
 			};
-			console.log(tracked);
 			return tracked;
 		});
 	};
