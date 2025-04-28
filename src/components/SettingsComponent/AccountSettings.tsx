@@ -19,7 +19,7 @@ const AccountSettings: React.FC = () => {
 			<h2 className="text-[24px] sm:text-[32px] font-header mb-2 text-text-100">
 				Account Settings
 			</h2>
-			<div className="bg-setting1/[40%] rounded-lg px-[12px] sm:px-[36px] py-[19px] sm:py-[48px] shadow-sm">
+			<div className="bg-setting1/[40%] rounded-tr-[15px] px-[12px] sm:px-[36px] py-[19px] sm:py-[48px] shadow-profile-info">
 				<div className="mb-3">
 					<h3 className="text-[24px] sm:text-[32px] font-header3 mb-3 text-text-100">
 						Password

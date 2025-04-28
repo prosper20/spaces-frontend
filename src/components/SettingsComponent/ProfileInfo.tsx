@@ -20,7 +20,7 @@ const ProfileInfo: React.FC = () => {
 			<h2 className="text-[24px] sm:text-[32px] font-header mb-[43px] text-gray-800">
 				Profile Information
 			</h2>
-			<div className="bg-settings/[40%] rounded-lg lg:px-40 px-[10px] py-[30px]">
+			<div className="bg-settings/[40%] shadow-profile-info rounded-tr-[15px] lg:px-40 px-[10px] py-[30px]">
 				<div className="flex gap-3">
 					<div className=" flex justify-center flex-wrap items-center gap-[53px]">
 						<img
@@ -33,7 +33,7 @@ const ProfileInfo: React.FC = () => {
 							alt="profile image"
 						/>
 						<div className="flex items-center justify-center sm:gap-[30px]">
-							<div className="flex flex-col gap-[25px] text-[18px] sm:text-[32px] font-header3">
+							<div className="flex flex-col gap-[25px] text-[18px] sm:text-[25px] font-header3">
 								<div className="sm:flex sm:gap-[20px]">
 									<label className="w-[100px]">Name</label>
 									<p className="bg-background-primary shadow-box-shadow1 font-header2 text-text-100/[83%] px-[10px] sm:px-[20px] py-[5px] ">

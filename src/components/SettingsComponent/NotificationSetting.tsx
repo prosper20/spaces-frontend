@@ -10,7 +10,7 @@ const NotificationSetting: React.FC = () => {
 			<h2 className="text-[24px] sm:text-[32px] font-header mb-2 text-gray-800">
 				Notification Preferences
 			</h2>
-			<div className="bg-[#F3D7CA66]/[40%] px-[12px] sm:px-[36px] py-[19px] sm:py-[48px] rounded-lg p-4 shadow-sm">
+			<div className="bg-[#F3D7CA66]/[40%] px-[12px] sm:px-[36px] py-[19px] sm:py-[48px] rounded-tr-[15px] p-4 shadow-profile-info">
 				<div className="mb-3">
 					<h3 className="text-[24px] sm:text-[32px] font-header3 mb-8 text-text-100">
 						Password
