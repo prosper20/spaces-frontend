@@ -79,7 +79,7 @@ const AccountSettings: React.FC = () => {
 						Save Changes
 					</button>
 				</div>
-				<div className="mt-[100px] flex justify-end">
+				<div className="mt-[50px] sm:mt-[100px] flex justify-end">
 					<button className="bg-accountset text-white px-[18px] py-2 text-[14px] md:text-[22px] font-header border-border rounded-[15px]">
 						Delete Account
 					</button>

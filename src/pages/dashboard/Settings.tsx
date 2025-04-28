@@ -4,7 +4,7 @@ import NotificationSetting from "../../components/SettingsComponent/Notification
 
 const SettingsPage = () => {
 	return (
-		<div className="sm:p-4 sm:pr-[4%] mb-[60px]">
+		<div className="p-3 sm:p-4 sm:pr-[4%] mb-[60px]">
 			<div className="flex flex-col gap-[90px]">
 				{/* Profile Information Section */}
 				<ProfileInfo />
