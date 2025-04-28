@@ -6,7 +6,7 @@ import useAuthHeader from "react-auth-kit/hooks/useAuthHeader";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 
-const users = "Vector.svg";
+const users = "/Vector.svg";
 
 export interface Group {
 	id: string;
@@ -16,9 +16,11 @@ export interface Group {
 
 interface Props {
 	className?: string;
+	header: string;
+	button?: boolean;
 }
 
-const ActiveGroupsCard: React.FC<Props> = ({ className }) => {
+const ActiveGroupsCard: React.FC<Props> = ({ className, header }) => {
 	const authHeader = useAuthHeader();
 	const [groups, setGroups] = useState<Group[]>([]);
 
@@ -60,11 +62,7 @@ const ActiveGroupsCard: React.FC<Props> = ({ className }) => {
 	}, [authHeader]);
 
 	return (
-		<Card1
-			header={"Active Groups"}
-			className={`pb-[30px] lg:row-span-2 ${className}`}
-			isStroked
-		>
+		<Card1 header={`${header}`} className={`pb-[30px] ${className}`} isStroked>
 			<a
 				href="/dashboard/groups"
 				className="text-[14px] text-right px-[25px] mt-[24px] font-header1 underline underline-offset-[24.5%] text-lightpink hover:underline"

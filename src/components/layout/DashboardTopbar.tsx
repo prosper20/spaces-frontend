@@ -5,6 +5,7 @@ import useAuthUser from "react-auth-kit/hooks/useAuthUser";
 
 import userAvatar from "../../assets/user-images/default-avatar-photo.jpg";
 import { Shadow2 } from "../UI/Input/Shadows";
+import { Link } from "react-router-dom";
 
 /* Props ------------------------------------------------------------------ */
 interface DashboardTopbarProps {
@@ -107,15 +108,17 @@ const DashboardTopbar: React.FC<DashboardTopbarProps> = ({
 					</button>
 
 					{/* user avatar */}
-					<img
-						src={
-							authUser?.profilePicture.trim() !== ""
-								? authUser?.profilePicture
-								: userAvatar
-						}
-						alt="User avatar"
-						className="w-[82px] h-[82px] max-sw:w-[50px] max-sw:h-[50px] rounded-full object-cover border border-black/10"
-					/>
+					<Link to={"/dashboard/profile"}>
+						<img
+							src={
+								authUser?.profilePicture.trim() !== ""
+									? authUser?.profilePicture
+									: userAvatar
+							}
+							alt="User avatar"
+							className="w-[82px] h-[82px] max-sw:w-[50px] max-sw:h-[50px] rounded-full object-cover border border-black/10"
+						/>
+					</Link>
 				</div>
 			</div>
 		</header>

@@ -70,7 +70,7 @@ const TaskModal: React.FC<Props> = ({ children, isOpen, onClose }) => {
 			>
 				{/* Modal content itself */}
 				<div
-					className="bg-background-100 p-20 rounded-lg shadow-lg max-h-[90vh] overflow-auto w-[850px]"
+					className="bg-background-100 p-6 md:p-20 rounded-lg shadow-lg max-h-[90vh] overflow-auto w-[90%] md:w-[850px]"
 					onClick={(e) => e.stopPropagation()} // stop click inside modal
 				>
 					{children}

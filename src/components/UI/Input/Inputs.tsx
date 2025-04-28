@@ -161,13 +161,13 @@ export const Input: React.FC<InputProps> = ({ label, name }) => {
 	return (
 		<>
 			<div className="flex flex-col ">
-				<label className="text-[24px] text-border font-header mb-1">
+				<label className="text-[16px] md:text-[24px] text-border font-header mb-1">
 					{label}
 				</label>
 				<input
 					type="text"
 					name={name}
-					className="rounded-full border shadow-add-task border-border/[40%] bg-background-100 px-8 text-[24px] text-border font-header2 outline-none py-1 w-[325px] h-[52px]"
+					className="rounded-full border shadow-add-task border-border/[40%] bg-background-100 px-4 md:px-8 text-[16px] md:text-[24px] text-border font-header2 outline-none py-1 w-[100%] md:w-[325px] md:h-[52px]"
 				/>
 			</div>
 		</>

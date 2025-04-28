@@ -25,6 +25,7 @@ const ChatPage = lazy(() => import("./pages/dashboard/Chat"));
 const FilesPage = lazy(() => import("./pages/dashboard/Files"));
 const SettingsPage = lazy(() => import("./pages/dashboard/Settings"));
 const OngoingSession = lazy(() => import("./pages/OngoingSession.tsx"));
+const ProfilePage = lazy(() => import("./pages/ProfilePage.tsx"));
 
 const router = createBrowserRouter([
 	{
@@ -126,6 +127,16 @@ const router = createBrowserRouter([
 				element: (
 					<Suspense fallback={null}>
 						<FilesPage />
+					</Suspense>
+				),
+			},
+
+			// • /dashboard/profile
+			{
+				path: "/dashboard/profile",
+				element: (
+					<Suspense fallback={null}>
+						<ProfilePage />
 					</Suspense>
 				),
 			},

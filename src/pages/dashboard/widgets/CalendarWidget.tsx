@@ -29,7 +29,6 @@ const CalendarWidget: React.FC<CalendarWidgetProps> = ({
 	});
 
 	const padStart = getDay(startOfMonth(month)); // 0‑6
-	console.log(padStart);
 
 	return (
 		<Card2
@@ -61,10 +60,10 @@ const CalendarWidget: React.FC<CalendarWidgetProps> = ({
 
 			{/* Weekdays */}
 			<div className="grid grid-cols-7 text-center text-[0.8vw] max-mm:text-[1.2vw] max-mw:text-[1vw] font-header1 text-text-100 mt-[0.1vw] max-mw:mt-[1vw] max-mw:py-[2vw]">
-				{weekdays.map((d) => (
+				{weekdays.map((d, index) => (
 					<span
 						className={`p-4 max-mm:p-[1vw] max-mw:text-[16px] ${className}`}
-						key={d}
+						key={index}
 					>
 						{d}
 					</span>
