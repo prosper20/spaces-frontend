@@ -13,7 +13,7 @@ const ProfilePage = () => (
 			<MobileProfileInfo />
 		</div>
 
-		<div className="grid  md:grid-cols-2 gap-[20px] mb-[50px]">
+		<div className="grid md:grid-cols-2 gap-[20px] mb-[50px]">
 			<ModulesEnrolled />
 			<ActiveGroupsCard
 				className="!shadow-profile-info"

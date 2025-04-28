@@ -90,6 +90,9 @@ export default {
 				task1: "#C872F04F",
 				task2: "#FF4F046B",
 				taskgreen: "#0ACC1038",
+				settings: "#F3D7CA66",
+				accountset: "#CC0C0C",
+				setting1: "#F2C6B466"
 			},
 		},
 	},
