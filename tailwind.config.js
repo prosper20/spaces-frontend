@@ -92,7 +92,7 @@ export default {
 				taskgreen: "#0ACC1038",
 				settings: "#F3D7CA66",
 				accountset: "#CC0C0C",
-				setting1: "#F2C6B466"
+				setting1: "#F2C6B466",
 			},
 		},
 	},
