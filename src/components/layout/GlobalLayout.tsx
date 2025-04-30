@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { Toaster } from "sonner";
 
 import SessionProvider from "../../context/SessionProvider";
@@ -10,6 +10,8 @@ import DashboardTopbar from "./DashboardTopbar";
 const GlobalLayout: React.FC = () => {
 	/* Drawer state for tablets/phones */
 	const [drawerOpen, setDrawerOpen] = useState(false);
+	const location = useLocation();
+	const isChatPage = location.pathname.startsWith("/dashboard/chat");
 
 	return (
 		<SessionProvider>
@@ -27,7 +29,9 @@ const GlobalLayout: React.FC = () => {
 					<DashboardTopbar onHamburgerClick={() => setDrawerOpen(true)} />
 
 					{/* Scrollable outlet (cards grid lives in each page) */}
-					<main className="flex-1 overflow-y-auto mx-[13px] lg:ml-[3%] xxl:mr-[0px] lg:pt-[21px] xl:pb-[20px]">
+					<main
+						className={`flex-1 overflow-y-auto ${isChatPage ? "" : "mx-[13px] lg:pt-[21px] lg:ml-[3%] xl:pb-[20px]"}   xxl:mr-[0px]`}
+					>
 						<Outlet />
 					</main>
 				</div>
