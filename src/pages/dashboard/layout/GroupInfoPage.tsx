@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Card2 } from "../../../components/UI/Input/Card1";
-import brainImg from "../../../assets/images/Module Icon.svg";
+// import brainImg from "../../../assets/images/Module Icon.svg";
 import userAvatar from "../../../assets/user-images/avatar.png";
 import useAuthHeader from "react-auth-kit/hooks/useAuthHeader";
 import { toast } from "sonner";
@@ -63,7 +63,11 @@ const GroupInfoPage = () => {
 			{/* Module Card */}
 			{group.module && (
 				<Card2 className="flex items-center gap-6 p-6 rounded-[8px] bg-background-primary">
-					<img src={brainImg} alt="Module Icon" className="w-[80px] h-[80px]" />
+					<img
+						// src={brainImg} alt="Module Icon"
+						className="w-[80px] h-[80px] rounded-full"
+						src={`https://api.dicebear.com/8.x/shapes/svg?seed=${encodeURIComponent(group.groupName)}`}
+					/>
 					<div>
 						<p className="text-[18px] text-text-100">Module:</p>
 						<h2 className="text-[24px] font-header2 text-text-100">
