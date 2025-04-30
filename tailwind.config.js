@@ -80,7 +80,7 @@ export default {
 				white: "#fff",
 				black: "#000",
 				background: { 100: "#F5F0EB" },
-				text: { 100: "#2E2E2E" },
+				text: { 100: "#2E2E2E", 200: "#978B7B" },
 				text: { 200: "#2E2E2E94" },
 				button: { 100: "#B28B50" },
 				sidebar: { 100: "#B28B50", 200: "#BCA27C" },

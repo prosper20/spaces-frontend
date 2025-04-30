@@ -16,6 +16,10 @@ import CreateGroupPage from "./pages/dashboard/layout/CreateGroupPage.tsx";
 import GroupDashboardPage from "./pages/dashboard/layout/GroupDashboardPage.tsx";
 import GroupInfoPage from "./pages/dashboard/layout/GroupInfoPage.tsx";
 import GroupsListPage from "./pages/dashboard/layout/GroupsListPage.tsx";
+import { Message } from "iconsax-react";
+import { Files } from "lucide-react";
+import ChatMessages from "./components/ChatMessages.tsx";
+import { groupedMessages } from "./pages/dashboard/Chat";
 
 /* dashboard pages */
 const DashboardHome = lazy(() => import("./pages/dashboard/Dashboard"));
@@ -119,6 +123,34 @@ const router = createBrowserRouter([
 						<ChatPage />
 					</Suspense>
 				),
+				children: [
+					{
+						index: true,
+						element: (
+							<div className="flex justify-center pr-[300px] text-border items-center h-[70vh]">
+								<Message size={100} />
+								<h1 className="text-[36px]">Start Chatting</h1>
+							</div>
+						),
+					},
+					{
+						path: "/dashboard/chat/files",
+						element: (
+							<div className="flex justify-center pr-[300px] text-border items-center h-[70vh]">
+								<Files size={100} />
+								<h1 className="text-[36px]">Files</h1>
+							</div>
+						),
+					},
+					{
+						path: "/dashboard/chat/group/:groupName",
+						element: <ChatMessages groupedMessages={groupedMessages} />,
+					},
+					{
+						path: "/dashboard/chat/messages",
+						element: <ChatMessages groupedMessages={groupedMessages} />,
+					},
+				],
 			},
 
 			// • /dashboard/files
