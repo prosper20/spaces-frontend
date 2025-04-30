@@ -17,7 +17,6 @@ import GroupDashboardPage from "./pages/dashboard/layout/GroupDashboardPage.tsx"
 import GroupInfoPage from "./pages/dashboard/layout/GroupInfoPage.tsx";
 import GroupsListPage from "./pages/dashboard/layout/GroupsListPage.tsx";
 import { Message } from "iconsax-react";
-import { Files } from "lucide-react";
 import ChatMessages from "./components/ChatMessages.tsx";
 import { groupedMessages } from "./pages/dashboard/Chat";
 
@@ -30,6 +29,7 @@ const FilesPage = lazy(() => import("./pages/dashboard/Files"));
 const SettingsPage = lazy(() => import("./pages/dashboard/Settings"));
 const OngoingSession = lazy(() => import("./pages/OngoingSession.tsx"));
 const ProfilePage = lazy(() => import("./pages/ProfilePage.tsx"));
+const ChatFiles = lazy(() => import("./pages/dashboard/ChatFiles.tsx"));
 
 const router = createBrowserRouter([
 	{
@@ -135,12 +135,7 @@ const router = createBrowserRouter([
 					},
 					{
 						path: "/dashboard/chat/files",
-						element: (
-							<div className="flex justify-center pr-[300px] text-border items-center h-[70vh]">
-								<Files size={100} />
-								<h1 className="text-[36px]">Files</h1>
-							</div>
-						),
+						element: <ChatFiles />,
 					},
 					{
 						path: "/dashboard/chat/group/:groupName",
