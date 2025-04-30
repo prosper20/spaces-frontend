@@ -38,7 +38,7 @@ const GroupsListPage: React.FC = () => {
 					purpose,
 					module,
 					tags,
-					supervisor: supervisorId,
+					supervisorId,
 				}),
 			});
 
