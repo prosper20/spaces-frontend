@@ -11,7 +11,8 @@ const ChatLayout = () => {
 		pathname.startsWith("/dashboard/chat/") && !isRootRoute;
 
 	return (
-		<div className="flex fixed w-full lg:pr-[290px] pr-[10px]">
+		// <div className="flex fixed w-full lg:pr-[290px] pr-[10px]">
+		<div className="flex fixed w-full lg:pr-[290px]">
 			<div
 				className={`md:border-r-primary-button-100
 		md:border-r-[1px] basis-[100%] md:basis-[45%] min-w-[218px] text-border text-center ${isConversationView ? "hidden" : "block"} md:block `}

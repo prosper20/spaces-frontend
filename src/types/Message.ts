@@ -11,25 +11,14 @@ export interface Author {
 	role: "STUDENT" | "SUPERVISOR";
 }
 
-export type Message =
-	| {
-			id: string;
-			created_at: string;
-			message: string;
-			type?: null;
-			isEdited: boolean;
-			files: FileItem[];
-			author: Author;
-	  }
-	| {
-			id: string;
-			created_at: string;
-			message: string;
-			type: "info";
-			author: null;
-			files?: never;
-			isEdited?: never;
-	  };
+export type Message = {
+	id: string;
+	created_at: string;
+	message: string;
+	isEdited: boolean;
+	files: FileItem[];
+	author: Author;
+};
 
 export interface Participant {
 	id: string;
