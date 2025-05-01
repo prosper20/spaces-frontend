@@ -1,5 +1,5 @@
 "use client";
-import { useState, forwardRef } from "react";
+import React, { useState, forwardRef } from "react";
 import { Eye, EyeSlash } from "iconsax-react";
 import { FormInputProps } from "../../../types/FormInput";
 
@@ -152,24 +152,127 @@ export const SelectInput = forwardRef<HTMLSelectElement, SelectInputProps>(
 
 SelectInput.displayName = "SelectInput";
 
-interface InputProps {
+// interface InputProps {
+// 	label: string;
+// 	name: string;
+// }
+
+// export const Input: React.FC<InputProps> = ({ label, name }) => {
+// 	return (
+// 		<>
+// 			<div className="flex flex-col ">
+// 				<label className="text-[16px] md:text-[24px] text-border font-header mb-1">
+// 					{label}
+// 				</label>
+// 				<input
+// 					type="text"
+// 					name={name}
+// 					className="rounded-full border shadow-add-task border-border/[40%] bg-background-100 px-4 md:px-8 text-[16px] md:text-[24px] text-border font-header2 outline-none py-1 w-[100%] md:w-[325px] md:h-[52px]"
+// 				/>
+// 			</div>
+// 		</>
+// 	);
+// };
+
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	label: string;
 	name: string;
 }
 
-export const Input: React.FC<InputProps> = ({ label, name }) => {
+export const Input: React.FC<InputProps> = ({
+	label,
+	name,
+	value,
+	onChange,
+	type = "text",
+	placeholder,
+	required,
+	className,
+	...rest
+}) => {
 	return (
-		<>
-			<div className="flex flex-col ">
-				<label className="text-[16px] md:text-[24px] text-border font-header mb-1">
-					{label}
-				</label>
-				<input
-					type="text"
-					name={name}
-					className="rounded-full border shadow-add-task border-border/[40%] bg-background-100 px-4 md:px-8 text-[16px] md:text-[24px] text-border font-header2 outline-none py-1 w-[100%] md:w-[325px] md:h-[52px]"
-				/>
-			</div>
-		</>
+		<div className="flex flex-col w-full">
+			<label
+				htmlFor={name}
+				className="text-[16px] md:text-[24px] text-border font-header mb-1"
+			>
+				{label}
+			</label>
+			<input
+				id={name}
+				name={name}
+				type={type}
+				value={value}
+				onChange={onChange}
+				placeholder={placeholder}
+				required={required}
+				className={`rounded-full border shadow-add-task border-border/[40%] bg-background-100 px-4 md:px-8 text-[16px] md:text-[24px] text-border font-header2 outline-none py-1 w-full md:w-[325px] md:h-[52px] ${className || ""}`}
+				{...rest}
+			/>
+		</div>
 	);
 };
+
+// import React, { forwardRef } from "react";
+// import { FieldError } from "react-hook-form";
+
+// type Option = {
+// 	label: string;
+// 	value: string;
+// };
+
+type SelectInputProps2 = {
+	id: string;
+	name: string;
+	options: Option[];
+	label?: string;
+	error?: FieldError;
+	placeholder?: string;
+} & React.SelectHTMLAttributes<HTMLSelectElement>;
+
+export const SelectInput2 = forwardRef<HTMLSelectElement, SelectInputProps2>(
+	(
+		{
+			id,
+			name,
+			label,
+			options,
+			error,
+			placeholder = "Select an option",
+			...rest
+		},
+		ref
+	) => {
+		return (
+			<div className="flex flex-col w-full">
+				{label && (
+					<label
+						htmlFor={id}
+						className="text-[16px] md:text-[24px] text-border font-header mb-1"
+					>
+						{label}
+					</label>
+				)}
+				<select
+					id={id}
+					name={name}
+					ref={ref}
+					{...rest}
+					className={`rounded-full border shadow-add-task border-border/[40%] bg-background-100 px-4 md:px-8 text-[16px] md:text-[24px] text-border font-header2 outline-none py-1 w-full md:w-[325px] md:h-[52px] ${
+						error ? "border-red-500" : ""
+					}`}
+				>
+					<option value="">{placeholder}</option>
+					{options.map((opt) => (
+						<option key={opt.value} value={opt.value}>
+							{opt.label}
+						</option>
+					))}
+				</select>
+				{error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+			</div>
+		);
+	}
+);
+
+SelectInput.displayName = "SelectInput";

@@ -64,6 +64,7 @@ interface Card3Props {
 	isStroked?: boolean;
 	header: string;
 	headButton?: boolean;
+	handleOpen?: () => void;
 	imgStyle?: string;
 	img?: string;
 	alt: string;
@@ -76,6 +77,7 @@ export const Card3: React.FC<Card3Props> = ({
 	isStroked,
 	header,
 	headButton,
+	handleOpen,
 	imgStyle,
 	img,
 	alt,
@@ -93,9 +95,9 @@ export const Card3: React.FC<Card3Props> = ({
 					{header}
 				</h3>
 				{headButton && (
-					<div className={`${imgStyle}`}>
+					<button onClick={handleOpen} className={`cursor-pointer${imgStyle}`}>
 						<img src={img} alt={alt} />
-					</div>
+					</button>
 				)}
 			</header>
 

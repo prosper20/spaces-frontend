@@ -92,10 +92,13 @@ const GroupDashboardPage: React.FC = () => {
 				/>
 
 				<GroupTasks
+					groupId={groupData.id}
 					items={groupData.tasks?.map((task: any) => ({
 						id: task.id,
-						task: task.title,
-						progress: "0",
+						title: task.title,
+						status: task.status,
+						description: task.description,
+						assignees: task.assignees,
 					}))}
 				/>
 			</section>
