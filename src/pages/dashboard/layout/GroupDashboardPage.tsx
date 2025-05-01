@@ -92,16 +92,18 @@ const GroupDashboardPage: React.FC = () => {
 				/>
 
 				<GroupTasks
+					groupId={groupData.id}
 					items={groupData.tasks?.map((task: any) => ({
 						id: task.id,
-						task: task.title,
-						progress: "0",
+						title: task.title,
+						status: task.status,
+						description: task.description,
+						assignees: task.assignees,
 					}))}
 				/>
 			</section>
 
-			{/* <ChatGroupCard messages={groupData.chat?.messages || []} /> */}
-			<ChatGroupCard />
+			<ChatGroupCard messages={groupData.chat?.messages || []} />
 
 			{/* second Grid */}
 			<section className="flex flex-col gap-[50px] lg:grid lg:grid-cols-2 lg:gap-[15px] xl:grid-cols-3">

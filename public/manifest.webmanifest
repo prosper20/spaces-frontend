@@ -1,4 +1,12 @@
 {
+	"name": "SPACES - Collaborate & Study",
+	"short_name": "SPACES",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#F5F0EB",
+	"theme_color": "#B28B50",
+	"description": "Your collaborative hub for study groups and projects",
+	"orientation": "portrait",
 	"icons": [
 		{
 			"src": "/android-chrome-192x192.png",
@@ -9,6 +17,12 @@
 			"src": "/android-chrome-512x512.png",
 			"sizes": "512x512",
 			"type": "image/png"
+		},
+		{
+			"src": "/maskable-icon.png",
+			"sizes": "154x154",
+			"type": "image/png",
+			"purpose": "maskable"
 		}
 	]
 }

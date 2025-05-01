@@ -16,16 +16,17 @@ import CreateGroupPage from "./pages/dashboard/layout/CreateGroupPage.tsx";
 import GroupDashboardPage from "./pages/dashboard/layout/GroupDashboardPage.tsx";
 import GroupInfoPage from "./pages/dashboard/layout/GroupInfoPage.tsx";
 import GroupsListPage from "./pages/dashboard/layout/GroupsListPage.tsx";
-import { Message } from "iconsax-react";
-import ChatMessages from "./components/ChatMessages.tsx";
-import { groupedMessages } from "./pages/dashboard/Chat";
 import Projects from "./pages/Projects.tsx";
+import ChatSplash from "./components/UI/chat/ChatSplash.tsx";
+import ChatLayout from "./components/UI/chat/ChatLayout.tsx";
+import ChatRoom from "./components/UI/chat/ChatRoom.tsx";
+import ChatMessages from "./components/UI/chat/ChatMessages.tsx";
 
 /* dashboard pages */
 const DashboardHome = lazy(() => import("./pages/dashboard/Dashboard"));
 const TasksPage = lazy(() => import("./pages/dashboard/Tasks"));
 const SchedulePage = lazy(() => import("./pages/dashboard/Schedule"));
-const ChatPage = lazy(() => import("./pages/dashboard/Chat"));
+// const ChatPage = lazy(() => import("./pages/dashboard/Chat"));
 const FilesPage = lazy(() => import("./pages/dashboard/Files"));
 const SettingsPage = lazy(() => import("./pages/dashboard/Settings"));
 const OngoingSession = lazy(() => import("./pages/OngoingSession.tsx"));
@@ -125,34 +126,97 @@ const router = createBrowserRouter([
 			},
 
 			// • /dashboard/chat
+			// {
+			// 	path: "/dashboard/chat",
+			// 	element: (
+			// 		<Suspense fallback={null}>
+			// 			<ChatPage />
+			// 		</Suspense>
+			// 	),
+			// 	children: [
+			// 		{
+			// 			index: true,
+			// 			element: (
+			// 				<div className="flex justify-center pr-[300px] text-border items-center h-[70vh]">
+			// 					<Message size={100} />
+			// 					<h1 className="text-[36px]">Start Chatting</h1>
+			// 				</div>
+			// 			),
+			// 		},
+			// 		{
+			// 			path: "/dashboard/chat/files",
+			// 			element: (
+			// 				<div className="flex justify-center pr-[300px] text-border items-center h-[70vh]">
+			// 					<Files size={100} />
+			// 					<h1 className="text-[36px]">Files</h1>
+			// 				</div>
+			// 			),
+			// 		},
+			// 		{
+			// 			path: "/dashboard/chat/group/:groupName",
+			// 			element: <ChatMessages groupedMessages={groupedMessages} />,
+			// 		},
+			// 		{
+			// 			path: "/dashboard/chat/messages",
+			// 			element: <ChatMessages groupedMessages={groupedMessages} />,
+			// 		},
+			// 	],
+			// },
+
+			// {
+			// 	path: "/dashboard/chat",
+			// 	element: <ChatLayout />,
+			// 	children: [
+			// 		{ index: true, element: <ChatSplash /> },
+
+			// 		{
+			// 			path: ":conversationId",
+			// 			element: <ChatRoom />,
+			// 			children: [
+			// 				{ index: true, element: <ChatMessages /> },
+			// 				{ path: "files", element: <ChatFiles /> },
+			// 			],
+			// 		},
+			// 	],
+			// },
+
 			{
 				path: "/dashboard/chat",
-				element: (
-					<Suspense fallback={null}>
-						<ChatPage />
-					</Suspense>
-				),
+				element: <ChatLayout />,
 				children: [
 					{
 						index: true,
 						element: (
-							<div className="flex justify-center pr-[300px] text-border items-center h-[70vh]">
-								<Message size={100} />
-								<h1 className="text-[36px]">Start Chatting</h1>
-							</div>
+							<Suspense fallback={null}>
+								<ChatSplash />
+							</Suspense>
 						),
 					},
 					{
-						path: "/dashboard/chat/files",
-						element: <ChatFiles />,
-					},
-					{
-						path: "/dashboard/chat/group/:groupName",
-						element: <ChatMessages groupedMessages={groupedMessages} />,
-					},
-					{
-						path: "/dashboard/chat/messages",
-						element: <ChatMessages groupedMessages={groupedMessages} />,
+						path: ":conversationId",
+						element: (
+							<Suspense fallback={null}>
+								<ChatRoom />
+							</Suspense>
+						),
+						children: [
+							{
+								index: true,
+								element: (
+									<Suspense fallback={null}>
+										<ChatMessages />
+									</Suspense>
+								),
+							},
+							{
+								path: "files",
+								element: (
+									<Suspense fallback={null}>
+										<ChatFiles />
+									</Suspense>
+								),
+							},
+						],
 					},
 				],
 			},
