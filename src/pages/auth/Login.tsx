@@ -62,6 +62,7 @@ const LoginForm = () => {
 						fullName: response.fullName,
 						email: response.email,
 						profilePicture: response.profile_picture,
+						role: response.role,
 					},
 				});
 				toast.success("Login Successful");

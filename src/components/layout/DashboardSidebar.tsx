@@ -7,12 +7,13 @@ import {
 	TaskSquare,
 	Calendar,
 	Message,
-	Folder2,
 	Setting2,
 	LogoutCurve,
+	DocumentText,
 	IconProps,
 } from "iconsax-react";
 import Logo from "../../assets/Logo/logo.svg";
+import useAuthUser from "react-auth-kit/hooks/useAuthUser";
 
 /* ────────────────────────────────────────────────────────── */
 /* Helpers                                                   */
@@ -30,7 +31,6 @@ const MAIN_LINKS: SidebarLink[] = [
 	{ to: "/dashboard/tasks", label: "Tasks", icon: TaskSquare },
 	{ to: "/dashboard/schedule", label: "Schedule", icon: Calendar },
 	{ to: "/dashboard/chat", label: "Chat", icon: Message },
-	{ to: "/dashboard/files", label: "Files", icon: Folder2 },
 ];
 
 const SECONDARY_LINKS: SidebarLink[] = [
@@ -49,7 +49,17 @@ type Props = {
 	onLinkClick?: () => void;
 };
 
+type Role = "STUDENT" | "SUPERVISOR";
+
 const DashboardSidebar: React.FC<Props> = ({ className = "", onLinkClick }) => {
+	const authUser: {
+		id: string;
+		fullName: string;
+		email: string;
+		profilePicture: string;
+		role: Role;
+	} | null = useAuthUser();
+	console.log("hello", authUser);
 	const baseLinkClasses =
 		"flex items-center gap-[16px] pl-[66px] pt-[13px] pb-[23px] h-[72px] rounded-tr-[10px] text-[24px] text-border font-header2 transition";
 
@@ -72,23 +82,36 @@ const DashboardSidebar: React.FC<Props> = ({ className = "", onLinkClick }) => {
 			<div className="flex flex-col h-[85%]">
 				{/* Navigation */}
 				<nav className="flex-1 justify-start overflow-y-auto mt-[72px] space-y-2">
-					{MAIN_LINKS.map(({ to, label, icon: Icon }) => (
-						<NavLink
-							key={to}
-							to={to}
-							end={to === "/dashboard"}
-							className={({ isActive }) =>
-								[
-									baseLinkClasses,
-									isActive ? "bg-background-100" : "hover:bg-background-100/40",
-								].join(" ")
-							}
-							onClick={onLinkClick}
-						>
-							<Icon size={20} variant="Outline" />
-							{label}
-						</NavLink>
-					))}
+					{MAIN_LINKS.map(({ to, label, icon: Icon }) => {
+						let to1 = to;
+						let label1 = label;
+						let Icon1 = Icon;
+
+						if (authUser?.role === "SUPERVISOR" && label === "Tasks") {
+							to1 = "/dashboard/projects";
+							label1 = "Projects";
+							Icon1 = DocumentText;
+						}
+						return (
+							<NavLink
+								key={to1}
+								to={to1}
+								end={to1 === "/dashboard"}
+								className={({ isActive }) =>
+									[
+										baseLinkClasses,
+										isActive
+											? "bg-background-100"
+											: "hover:bg-background-100/40",
+									].join(" ")
+								}
+								onClick={onLinkClick}
+							>
+								<Icon1 size={20} variant="Outline" />
+								{label1}
+							</NavLink>
+						);
+					})}
 				</nav>
 
 				{/* Bottom section */}

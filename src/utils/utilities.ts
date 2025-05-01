@@ -34,3 +34,7 @@ export function getIconFromTag(tag: string) {
 	const iconIndex = charCode % tagIcons.length;
 	return tagIcons[iconIndex];
 }
+
+export function formatText(role: string) {
+	return role.charAt(0).toUpperCase() + role.substring(1).toLowerCase();
+}

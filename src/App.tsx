@@ -19,6 +19,7 @@ import GroupsListPage from "./pages/dashboard/layout/GroupsListPage.tsx";
 import { Message } from "iconsax-react";
 import ChatMessages from "./components/ChatMessages.tsx";
 import { groupedMessages } from "./pages/dashboard/Chat";
+import Projects from "./pages/Projects.tsx";
 
 /* dashboard pages */
 const DashboardHome = lazy(() => import("./pages/dashboard/Dashboard"));
@@ -47,6 +48,14 @@ const router = createBrowserRouter([
 				element: (
 					<Suspense fallback={null}>
 						<DashboardHome />
+					</Suspense>
+				),
+			},
+			{
+				path: "/dashboard/projects",
+				element: (
+					<Suspense fallback={null}>
+						<Projects />
 					</Suspense>
 				),
 			},
