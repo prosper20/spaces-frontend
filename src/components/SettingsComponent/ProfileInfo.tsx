@@ -1,6 +1,9 @@
 import { useState } from "react";
 import useAuthUser from "react-auth-kit/hooks/useAuthUser";
 import userAvatar from "../../assets/user-images/default-avatar-photo.jpg";
+import { formatText } from "../../utils/utilities";
+
+type Role = "STUDENT" | "SUPERVISOR";
 
 const ProfileInfo: React.FC = () => {
 	const authUser: {
@@ -8,12 +11,14 @@ const ProfileInfo: React.FC = () => {
 		fullName: string;
 		email: string;
 		profilePicture: string;
+		role: Role;
 	} | null = useAuthUser();
 	// State for profile information
+	const role = authUser!.role;
 	const [profileInfo] = useState({
 		name: authUser?.fullName || "N/A",
 		email: authUser?.email || "N/A",
-		role: "Student",
+		role: formatText(role),
 	});
 	return (
 		<section className="mb-4">

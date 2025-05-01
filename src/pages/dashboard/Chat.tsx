@@ -130,7 +130,7 @@ export default function Chat() {
 	console.log(groups);
 	return (
 		<div className="flex fixed w-full lg:pr-[290px] pr-[10px]">
-			<div className="bg-border/[15%] border-border/[71%] basis-[18%] min-w-[218px] text-border text-center">
+			<div className="bg-border/[15%] h-[100vh] border-border/[71%] basis-[18%] min-w-[218px] text-border text-center">
 				<header className="mt-[70px]">
 					<h1 className="text-[28px] font-header1">Groups</h1>
 				</header>
@@ -186,8 +186,8 @@ export default function Chat() {
 					</div>
 				</Link>
 			</div>
-			<div className="w-full h-screen bg-transparent flex flex-col justify-between">
-				<div>
+			<div className="w-full bg-transparent h-[100vh] flex flex-col justify-between">
+				<div className="flex-1">
 					<div className=" border-b text-border px-8 border-border">
 						<h1 className="text-[28px] my-[16px] font-header1">
 							Project Pioneers

@@ -16,13 +16,9 @@ import CreateGroupPage from "./pages/dashboard/layout/CreateGroupPage.tsx";
 import GroupDashboardPage from "./pages/dashboard/layout/GroupDashboardPage.tsx";
 import GroupInfoPage from "./pages/dashboard/layout/GroupInfoPage.tsx";
 import GroupsListPage from "./pages/dashboard/layout/GroupsListPage.tsx";
-// import { Message } from "iconsax-react";
-// import { Files } from "lucide-react";
-// import ChatMessages from "./components/ChatMessages.tsx";
-// import { groupedMessages } from "./pages/dashboard/Chat";
+import Projects from "./pages/Projects.tsx";
 import ChatSplash from "./components/UI/chat/ChatSplash.tsx";
 import ChatLayout from "./components/UI/chat/ChatLayout.tsx";
-import ChatFiles from "./components/UI/chat/ChatFiles.tsx";
 import ChatRoom from "./components/UI/chat/ChatRoom.tsx";
 import ChatMessages from "./components/UI/chat/ChatMessages.tsx";
 
@@ -35,6 +31,7 @@ const FilesPage = lazy(() => import("./pages/dashboard/Files"));
 const SettingsPage = lazy(() => import("./pages/dashboard/Settings"));
 const OngoingSession = lazy(() => import("./pages/OngoingSession.tsx"));
 const ProfilePage = lazy(() => import("./pages/ProfilePage.tsx"));
+const ChatFiles = lazy(() => import("./pages/dashboard/ChatFiles.tsx"));
 
 const router = createBrowserRouter([
 	{
@@ -52,6 +49,14 @@ const router = createBrowserRouter([
 				element: (
 					<Suspense fallback={null}>
 						<DashboardHome />
+					</Suspense>
+				),
+			},
+			{
+				path: "/dashboard/projects",
+				element: (
+					<Suspense fallback={null}>
+						<Projects />
 					</Suspense>
 				),
 			},

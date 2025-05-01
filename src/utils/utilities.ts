@@ -38,6 +38,11 @@ export function getIconFromTag(tag: string) {
 	return tagIcons[iconIndex];
 }
 
+
+export function formatText(role: string) {
+	return role.charAt(0).toUpperCase() + role.substring(1).toLowerCase();
+}
+
 export const groupMessagesByDate = (messages: Message[]) => {
 	const groups: { date: string; items: Message[] }[] = [];
 
@@ -59,3 +64,4 @@ export const groupMessagesByDate = (messages: Message[]) => {
 
 	return groups;
 };
+
