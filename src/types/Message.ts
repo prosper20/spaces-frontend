@@ -20,6 +20,12 @@ export type Message = {
 	author: Author;
 };
 
+export type SocketMessage = {
+	recipientId: string;
+	conversationId: string;
+	message: Message;
+};
+
 export interface Participant {
 	id: string;
 	fullName: string;
