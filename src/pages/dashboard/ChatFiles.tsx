@@ -52,7 +52,7 @@ const ChatFiles: React.FC = () => {
 			)
 		: fileData;
 	return (
-		<div className="p-9">
+		<div className="p-9 pb-[100px] overflow-y-auto h-[calc(120vh-380px)]">
 			<SearchFiles />
 
 			<ChatFilesSection fileData={files}></ChatFilesSection>

@@ -18,9 +18,9 @@ function SessionProvider({ children }: { children: React.ReactNode }) {
 	const navigate = useNavigate();
 	const isAuthenticated = useIsAuthenticated();
 	useEffect(() => {
-		if (!isAuthenticated) {
-			navigate("/welcome");
-		}
+		// if (!isAuthenticated) {
+		// 	navigate("/welcome");
+		// }
 	}, [isAuthenticated, navigate]);
 
 	return <>{children}</>;
