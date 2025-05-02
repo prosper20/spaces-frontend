@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Download, Files } from "lucide-react";
 import { Message } from "../../../types/Message";
+import userAvatar from "../../../assets/user-images/default-avatar-photo.jpg";
 
 interface MessageBubbleProps {
 	msg: Message;
@@ -51,7 +52,11 @@ const MessageBubble: FC<MessageBubbleProps> = ({ msg, isOwn, time }) => {
 	return (
 		<div className="space-y-1 flex gap-6">
 			<img
-				src={msg.author.profile_picture}
+				src={
+					msg.author.profile_picture?.trim() !== ""
+						? msg.author.profile_picture
+						: userAvatar
+				}
 				alt={msg.author.fullName}
 				className="w-[56px] h-[56px] rounded-[16px] object-cover hidden md:block"
 			/>

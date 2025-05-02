@@ -2,13 +2,7 @@ import { z } from "zod";
 
 export const signupSchema = z
 	.object({
-		email: z
-			.string({ required_error: "Email is required" })
-			.email("Invalid email address")
-			.regex(/^[\w-.]+@live\.tees\.ac\.uk$/, {
-				message:
-					"Email must be a valid institutional email (e.g. user@live.tees.ac.uk)",
-			}),
+		email: z.string({ required_error: "Email is required" }).email(),
 		password: z
 			.string({ required_error: "Password is required" })
 			.min(1, "Password is required"),
@@ -33,7 +27,13 @@ export type TSignup = z.infer<typeof signupSchema>;
 
 // export const signupSchema = z
 // 	.object({
-// 		email: z.string({ required_error: "Email is required" }).email(),
+// 		email: z
+// 			.string({ required_error: "Email is required" })
+// 			.email("Invalid email address")
+// 			.regex(/^[\w-.]+@live\.tees\.ac\.uk$/, {
+// 				message:
+// 					"Email must be a valid institutional email (e.g. user@live.tees.ac.uk)",
+// 			}),
 // 		password: z
 // 			.string({ required_error: "Password is required" })
 // 			.min(1, "Password is required"),
