@@ -8,7 +8,7 @@
 
 ## 🌐 Live Demo
 
-🧪 [Try the app live](https://spaces-frontend-omega.vercel.app)
+🧪 [Try the app live](https://spaces-frontend-lovat.vercel.app)
 
 ### 🔐 Demo Login
 
